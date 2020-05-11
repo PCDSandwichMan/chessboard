@@ -1,0 +1,9 @@
+@import "../../assets/scss/index";
+
+.board {
+  width: 70vw;
+  height: 70vh;
+  color: #fff;
+  margin: 10vh auto;
+  @include F();
+}
