@@ -5,28 +5,25 @@ import "./board.scss";
 import Tile from "../tile/Tile.jsx";
 
 function Board({ tilesCol }) {
-  const [board, setBoard] = useState({
-    row: [],
-  });
+  const [board, setBoard] = useState([]);
 
   useEffect(() => {
     if (!tilesCol || tilesCol <= 0 || tilesCol >= 80) {
       tilesCol = 0;
     }
 
-    setBoard({
-      row: new Array(parseInt(tilesCol)).fill().map((val, idx) => {
+    setBoard(
+      new Array(parseInt(tilesCol)).fill().map((val, idx) => {
         return <Tile />;
-      }),
-    });
-    console.log(board.row, tilesCol);
+      })
+    );
   }, [tilesCol]);
 
   return (
-    <div className="board">
-      {board.row.map((tile, i) => (
+    <div className="boardComponent">
+      {board.map((tile, i) => (
         <div key={i}>
-          {board.row.map((tile, j) => (
+          {board.map((tile, j) => (
             <Tile row={i} column={j} />
           ))}
         </div>

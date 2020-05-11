@@ -5,7 +5,7 @@ import "./dashboard.scss";
 import Board from "../../components/board/Board";
 
 function Dashboard() {
-  const [tiles, setTiles] = useState(9);
+  const [tiles, setTiles] = useState(8);
 
   return (
     <div className="dashboardView">
