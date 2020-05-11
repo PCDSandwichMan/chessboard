@@ -5,17 +5,17 @@ import "./dashboard.scss";
 import Board from "../../components/board/Board";
 
 function Dashboard() {
-  const [tiles, setTiles] = useState(0);
+  const [tiles, setTiles] = useState(9);
 
   return (
-    <div>
-      <form action="">
-        <input
-          type="number"
-          value={tiles}
-          onChange={(e) => setTiles(e.target.value)}
-        />
-      </form>
+    <div className="dashboardView">
+      <input
+        className="dashboardView__input"
+        type="number"
+        value={tiles}
+        placeholder="How many squares would you like?"
+        onChange={(e) => setTiles(e.target.value)}
+      />
       <div>
         <Board tilesCol={tiles} />
       </div>

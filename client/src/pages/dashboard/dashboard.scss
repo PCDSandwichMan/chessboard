@@ -1,12 +1,14 @@
 @import "../../assets/scss/index";
 
 .dashboardView {
-  @include F();
   width: 100vw;
   height: 100vh;
   background: #111;
 }
 
-input {
+.dashboardView__input {
   margin: 10px;
+  width: 25vw;
+  font-size: 1rem;
+  padding: 5px 10px;
 }
