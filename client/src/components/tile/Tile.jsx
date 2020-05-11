@@ -1,5 +1,5 @@
 import React from "react";
-import "./whiteTile.scss";
+import "./tile.scss";
 
 function Tile({ row, column }) {
   return (

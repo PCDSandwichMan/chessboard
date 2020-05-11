@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./board.scss";
 
 // - Components
-import WhiteTile from "../whiteTile/WhiteTile.jsx";
+import Tile from "../tile/Tile.jsx";
 
 function Board({ tilesCol }) {
   const [board, setBoard] = useState({
@@ -16,7 +16,7 @@ function Board({ tilesCol }) {
 
     setBoard({
       row: new Array(parseInt(tilesCol)).fill().map((val, idx) => {
-        return <WhiteTile idx={idx} />;
+        return <Tile />;
       }),
     });
     console.log(board.row, tilesCol);
@@ -27,7 +27,7 @@ function Board({ tilesCol }) {
       {board.row.map((tile, i) => (
         <div key={i}>
           {board.row.map((tile, j) => (
-            <WhiteTile row={i} column={j} />
+            <Tile row={i} column={j} />
           ))}
         </div>
       ))}
