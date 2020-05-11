@@ -6,8 +6,15 @@
   background: #111;
 }
 
+.dashboardView__input--wrapper {
+  padding: 10px;
+  h4 {
+    margin: 0 0 5px;
+    color: #eee;
+  }
+}
+
 .dashboardView__input {
-  margin: 10px;
   width: 25vw;
   font-size: 1rem;
   padding: 5px 10px;

@@ -9,13 +9,16 @@ function Dashboard() {
 
   return (
     <div className="dashboardView">
-      <input
-        className="dashboardView__input"
-        type="number"
-        value={tiles}
-        placeholder="How many squares would you like?"
-        onChange={(e) => setTiles(e.target.value)}
-      />
+      <div className="dashboardView__input--wrapper">
+        <h4>How many rows would you like?</h4>
+        <input
+          className="dashboardView__input"
+          type="number"
+          value={tiles}
+          placeholder="How many squares would you like?"
+          onChange={(e) => setTiles(e.target.value)}
+        />
+      </div>
       <div>
         <Board tilesCol={tiles} />
       </div>
