@@ -7,6 +7,7 @@ module.exports = {
     try {
       // * Auth handled by passport middleware
       const token = await helpers.genToken(req.user._id);
+       // * Returns token and oldGameState |defaults to store| p.s. I wouldn't if I was either not a solo dev or I was 100% sure the store will not change
       res.status(200).json({
         token,
         state: req.user.userGameState || {
@@ -44,12 +45,8 @@ module.exports = {
   async createNewUser(req, res) {
     try {
       const { username, password } = req.body;
-      if (!username || !password) {
-        return res
-          .status(400)
-          .json({ error: "must include username and password" });
-      }
       let saveUser;
+      // * Save user only if same username does not already exist
       if (!(await User.findOne({ username }))) {
         saveUser = await User.create({
           username,
@@ -68,7 +65,7 @@ module.exports = {
   },
   async getUserGameState(req, res) {
     try {
-      // * Auth handled by passport middleware
+      // * Returns token for refresh and oldGameState |defaults to store| p.s. I wouldn't if I was either not a solo dev or I was 100% sure the store will not change
       const token = await helpers.genToken(req.user._id);
       res.status(200).json({
         token,

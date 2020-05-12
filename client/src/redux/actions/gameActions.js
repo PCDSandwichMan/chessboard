@@ -9,7 +9,7 @@ export const setGameState = (gameState) => async (dispatch) => {
   });
 };
 
-// - Used to high tile options after clicking pawn
+// - Used to highlight tile options after clicking pawn
 export const highlightOptions = (player, row, column, board) => (dispatch) => {
   const getOptions = moveOptions(player, row, column, board);
 
@@ -37,14 +37,14 @@ export const movePawn = (oldLocation, newLocation) => (dispatch) => {
   });
 };
 
-// - Handle the current turn for each player to prevent consecutive moves
+// - Handles the current turn for each player to prevent consecutive moves
 export const swapTurn = () => (dispatch) => {
   dispatch({
     type: constants.SWAP_TURN,
   });
 };
 
-// - This sets the users configuration for tile and pawn color for ether player 1 or 2
+// - This sets the users configuration for tile and pawn color/shape for both players 1 or 2
 export const setUserConfig = (playerType, selectedColor, selectedIcon) => (
   dispatch
 ) => {
@@ -58,7 +58,7 @@ export const setUserConfig = (playerType, selectedColor, selectedIcon) => (
   });
 };
 
-// - This fires on login and will assign the only state object to the store if existing
+// - This fires on login and will assign the existing state object to the store if applicable
 export const setExistingState = (oldState) => (dispatch) => {
   dispatch({
     type: constants.LOAD_EXISTING_STATE,

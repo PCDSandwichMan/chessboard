@@ -157,6 +157,7 @@ export const moveOptions = (player, row, column, board) => {
   return moves;
 };
 
+// - Used to check if the token is past expiration for route protection
 export const tokenIsValid = (token) => {
   const decodeToken = jwtDecode(token);
   if (decodeToken.exp * 1000 < Date.now()) {

@@ -15,7 +15,7 @@ const initialState = {
 
 const gameReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    // - Used for board set mainly on load or refresh
+    // - Used for board setup mainly on load or refresh
     case constants.SET_BOARD_STATE:
       return {
         ...state,
