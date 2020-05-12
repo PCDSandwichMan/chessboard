@@ -7,7 +7,23 @@ module.exports = {
     try {
       // * Auth handled by passport middleware
       const token = await helpers.genToken(req.user._id);
-      res.status(200).json({ token, state: req.user.userGameState });
+      res.status(200).json({
+        token,
+        state: req.user.userGameState || {
+          game: {
+            playerOneConfig: {
+              selectedIcon: "",
+              selectedColor: "",
+            },
+            playerTwoConfig: {
+              selectedIcon: "",
+              selectedColor: "",
+            },
+            currentPlayerTurn: 1,
+            boardState: [],
+          },
+        },
+      });
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: "unable to validate user at this time" });
@@ -28,7 +44,6 @@ module.exports = {
   async createNewUser(req, res) {
     try {
       const { username, password } = req.body;
-      console.log(username, password);
       if (!username || !password) {
         return res
           .status(400)
