@@ -17,6 +17,21 @@ module.exports = {
   },
 
   schemas: {
-      // todo matt: add validation
+    newUserValidation: joi.object().keys({
+      username: joi.string().max(128).required(),
+      password: joi.string().max(128).required(),
+      confirmPassword: joi
+        .string()
+        .max(128)
+        .required()
+        .equal(joi.ref("password")),
+    }),
+    loginValidation: joi.object().keys({
+      username: joi.string().max(128).required(),
+      password: joi.string().max(128).required(),
+    }),
+    saveGameValidation: joi.object().keys({
+      game: joi.object().required(),
+    }),
   },
 };
