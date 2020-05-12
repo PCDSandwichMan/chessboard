@@ -1,21 +1,28 @@
 @import "../../assets/scss/index";
 
 .dashboardView {
+  background-color: #111;
   width: 100vw;
   height: 100vh;
-  background: #111;
-}
-
-.dashboardView__input--wrapper {
-  padding: 10px;
-  h4 {
-    margin: 0 0 5px;
+  header {
+    border: 1px solid red;
+    height: 10vh;
+    @include F($d: column);
+    input {
+      font-size: 1.5rem;
+      padding: 5px;
+    }
+  }
+  h3 {
     color: #eee;
   }
 }
 
-.dashboardView__input {
-  width: 25vw;
-  font-size: 1rem;
-  padding: 5px 10px;
+main {
+  border: 1px solid red;
+  margin: 5vh auto;
+  width: 90vw;
+  height: 80vh;
+  @include F();
+  background: #999;
 }

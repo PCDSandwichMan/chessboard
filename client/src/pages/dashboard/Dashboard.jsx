@@ -2,28 +2,62 @@ import React, { useState } from "react";
 import "./dashboard.scss";
 
 // - Components
-import Board from "../../components/board/Board";
+import Board from "../../old/board/Board";
 
-function Dashboard() {
-  const [tiles, setTiles] = useState(8);
+// - Redux
+import { connect } from "react-redux";
+import { setGameState } from "../../redux/actions/gameActions";
+
+function Dashboard({ setGameState }) {
+  const [rowCount, setRowCount] = useState(8);
+
+  const handleSubmit = () => {
+    //create 2d array
+    const newGameBoard = [];
+    for (let i = 0; i < rowCount; i++) {
+      // * Set player one pieces
+      if (i <= 1) {
+        // * Set Player 1
+        newGameBoard.push(new Array(+rowCount).fill().map((e) => 1));
+      } else if (i === rowCount - 1 || i === rowCount - 2) {
+        // * Set Player 2
+        newGameBoard.push(new Array(+rowCount).fill().map((e) => 2));
+      } else {
+        // * Set Empty
+        newGameBoard.push(new Array(+rowCount).fill().map((e) => 0));
+      }
+    }
+    console.log(newGameBoard);
+    return;
+    setGameState(setGameState);
+  };
 
   return (
     <div className="dashboardView">
-      <div className="dashboardView__input--wrapper">
-        <h4>How many rows would you like?</h4>
-        <input
-          className="dashboardView__input"
-          type="number"
-          value={tiles}
-          placeholder="How many squares would you like?"
-          onChange={(e) => setTiles(e.target.value)}
-        />
-      </div>
-      <div>
-        <Board tilesCol={tiles} />
-      </div>
+      <header>
+        <h3>How wide should the board be?</h3>
+        <div>
+          <input
+            type="number"
+            value={rowCount}
+            onChange={(e) => setRowCount(e.target.value)}
+            min="5"
+            max="60"
+          />
+          <button onClick={handleSubmit}>Submit</button>
+        </div>
+      </header>
+      <main>
+        <Board />
+      </main>
     </div>
   );
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  state,
+});
+
+const mapActionsToProps = { setGameState };
+
+export default connect(mapStateToProps, mapActionsToProps)(Dashboard);

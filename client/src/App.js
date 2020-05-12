@@ -2,7 +2,7 @@ import React from "react";
 import "./assets/scss/root/App.scss";
 
 // - Components
-import Dashboard from "./pages/dashboard/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
 
 function App() {
   return (
