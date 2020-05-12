@@ -23,12 +23,13 @@ main {
   margin: 5vh auto;
   width: 90vw;
   height: 80vh;
-  @include F($d: column);
+  @include F(space-evenly);
   background: #999;
 }
 
 .dashboardView__mainTtl {
-  padding: 5px 20px;
+  padding: 10px 0;
+  @include F();
   h1 {
     text-shadow: 1px 1px 2px #222;
     color: #111;
@@ -41,4 +42,8 @@ main {
 
 .dashboardView__mainTtl--playerTwo {
   background: #777;
+}
+
+.dashboardView__configOptions {
+  border: 1px solid red;
 }

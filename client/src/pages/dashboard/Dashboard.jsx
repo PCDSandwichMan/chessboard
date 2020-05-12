@@ -7,6 +7,8 @@ import Board from "../../components/dashboard/board/Board";
 // - Redux
 import { connect } from "react-redux";
 import { setGameState } from "../../redux/actions/gameActions";
+import OneConfigOptions from "../../components/dashboard/configOptions/OneConfigOptions";
+import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfigOptions";
 
 function Dashboard({ setGameState, currentPlayerTurn }) {
   const [rowCount, setRowCount] = useState(8);
@@ -70,19 +72,23 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
         </div>
       </header>
       <main>
-        <div
-          className={`
-        dashboardView__mainTtl
-        ${
-          currentPlayerTurn === 1
-            ? "dashboardView__mainTtl--playerOne"
-            : "dashboardView__mainTtl--playerTwo"
-        }
-        `}
-        >
-          <h1>Player {currentPlayerTurn === 1 ? "One" : "Two"}</h1>
-        </div>
-        <Board />
+        <OneConfigOptions />
+        <section>
+          <div
+            className={`
+            dashboardView__mainTtl
+            ${
+              currentPlayerTurn === 1
+                ? "dashboardView__mainTtl--playerOne"
+                : "dashboardView__mainTtl--playerTwo"
+            }
+            `}
+          >
+            <h1>Player {currentPlayerTurn === 1 ? "One" : "Two"}</h1>
+          </div>
+          <Board />
+        </section>
+        <TwoConfigOptions />
       </main>
     </div>
   );

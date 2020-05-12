@@ -65,8 +65,7 @@ export const removeHighlights = () => (dispatch) => {
   });
 };
 
-export const movePawn = (oldLocation, newLocation) => (dispatch) => {
-  console.log(oldLocation, newLocation);
+export const movePawn = (oldLocation, newLocation) => (dispatch) => { 
   dispatch({
     type: constants.MOVE_PAWN,
     payload: {

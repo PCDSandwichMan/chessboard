@@ -13,8 +13,7 @@ const gameReducer = (state = initialState, { type, payload }) => {
         boardState: payload,
       };
     case constants.MOVE_PAWN:
-      let newerBoard = state.boardState.map((rowArr) => rowArr);
-      console.log(payload);
+      let newerBoard = state.boardState.map((rowArr) => rowArr); 
       const tileType =
         newerBoard[payload.oldLocation[0]][payload.oldLocation[1]];
       newerBoard[payload.oldLocation[0]][payload.oldLocation[1]] = 0;

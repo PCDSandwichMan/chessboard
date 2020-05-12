@@ -1,0 +1,16 @@
+@import "../../../assets/scss/";
+
+.configOptionsComponent {
+  width: 30%;
+  @include F($d: column);
+}
+
+.configOptions__container {
+  @include F($d: column);
+  margin: 5vh 0;
+  h1 {
+    margin: 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
