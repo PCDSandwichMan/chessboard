@@ -3,6 +3,7 @@ import "./dashboard.scss";
 
 // - Material
 import { TextField, Button } from "@material-ui/core";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 // - Components
 import Board from "../../components/dashboard/board/Board";
@@ -13,13 +14,13 @@ import { setGameState } from "../../redux/actions/gameActions";
 import OneConfigOptions from "../../components/dashboard/configOptions/OneConfigOptions";
 import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfigOptions";
 
-function Dashboard({ setGameState, currentPlayerTurn }) {
+function Dashboard({ setGameState, currentPlayerTurn, history }) {
   const [rowCount, setRowCount] = useState(8);
 
-  const handleSubmit = () => { 
+  const handleBoardSetup = () => {
     if (rowCount <= 5 || rowCount >= 16) {
       alert(
-        "I intentionally limit this is the handleSubmit function of Dashboard.jsx since less than 5 and there is no game and more than 13 and the screen dies"
+        "I intentionally limit this is the handleBoardSetup function of Dashboard.jsx since less than 5 and there is no game and more than 13 and the screen dies"
       );
       return;
     }
@@ -54,12 +55,20 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
   };
 
   useEffect(() => {
-    handleSubmit();
+    handleBoardSetup();
   }, []);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    history.push("/");
+  };
 
   return (
     <div className="dashboardView">
       <header>
+        <div className="dashboard__logout" onClick={handleLogout}>
+          <ExitToAppIcon className="dashboard__logout__icon" />
+        </div>
         <div>
           <TextField
             label="How wide do you want your board to be?"
@@ -70,7 +79,7 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
             type="number"
             className="dashboardView__input"
           />
-          <Button onClick={handleSubmit} variant="outlined" color="primary">
+          <Button onClick={handleBoardSetup} variant="outlined" color="primary">
             Create New Board
           </Button>
         </div>

@@ -1,6 +1,7 @@
 @import "../../assets/scss/index";
 
 .dashboardView {
+  position: relative;
   background: url("https://images.pexels.com/photos/2525903/pexels-photo-2525903.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
     center fixed;
   background-size: cover;
@@ -15,6 +16,20 @@
       margin-left: 20px;
     }
   }
+}
+
+.dashboard__logout {
+  position: absolute;
+  right: 20px;
+  transition: transform 100ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: translateX(8%);
+  }
+}
+
+.dashboard__logout__icon {
+  color: #999;
 }
 
 .dashboardView__input {

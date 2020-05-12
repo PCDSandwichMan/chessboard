@@ -18,7 +18,7 @@ export const ActiveIcon = ({
   playerType,
   ...rest
 }) => {
-  console.log(playerTwoConfig.selectedColor);
+  
   if (playerType === 1) {
     switch (playerOneConfig.selectedIcon) {
       case "star":
