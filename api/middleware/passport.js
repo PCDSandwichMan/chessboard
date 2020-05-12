@@ -2,7 +2,7 @@ const JwtStrategy = require("passport-jwt").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/User");
-const config = require("../utils/config"); 
+const config = require("../utils/config");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 
@@ -14,8 +14,8 @@ passport.use(
       secretOrKey: config.JWT_SECRET,
       passReqToCallback: true,
     },
-    async (req, payload, done) => {
-      try {
+    async (req, payload, done) => { 
+      try { 
         const user = await User.findById(payload.id);
 
         if (!user) {
@@ -41,12 +41,11 @@ passport.use(
     async (username, password, done) => {
       try {
         const user = await User.findOne({ username });
-
         if (!user) {
           return done(null, false);
         }
-        
-        const isMatch = await bcrypt.compare(password, user.password); 
+
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
           return done(null, false);
         }

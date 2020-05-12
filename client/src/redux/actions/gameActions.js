@@ -2,8 +2,8 @@ import constants from "../../redux/constants";
 import { moveOptions } from "../../util/helpers";
 
 // - Used to set the initial game state of the board if not existing
-export const setGameState = (gameState) => (dispatch) => {
-  dispatch({
+export const setGameState = (gameState) => async (dispatch) => {
+  return dispatch({
     type: constants.SET_BOARD_STATE,
     payload: gameState,
   });

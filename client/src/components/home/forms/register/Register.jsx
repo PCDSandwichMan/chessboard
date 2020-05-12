@@ -42,8 +42,11 @@ export const Register = ({ setPageState, history }) => {
           setError("");
         }, 4000);
         switch (response.status) {
-          case 400:
+          case 409:
             setError("Username taken");
+            break;
+          case 400:
+            setError("Passwords must match");
             break;
           default:
             setError("An error occurred while creating you account");

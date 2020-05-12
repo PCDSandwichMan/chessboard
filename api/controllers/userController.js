@@ -56,7 +56,7 @@ module.exports = {
           password,
         });
       } else {
-        return res.status(400).json({ error: "user already exists" });
+        return res.status(409).json({ error: "user already exists" });
       }
 
       const token = await helpers.genToken(saveUser._id);
@@ -64,6 +64,32 @@ module.exports = {
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: "unable to create new user" });
+    }
+  },
+  async getUserGameState(req, res) {
+    try {
+      // * Auth handled by passport middleware
+      const token = await helpers.genToken(req.user._id);
+      res.status(200).json({
+        token,
+        state: req.user.userGameState || {
+          game: {
+            playerOneConfig: {
+              selectedIcon: "",
+              selectedColor: "",
+            },
+            playerTwoConfig: {
+              selectedIcon: "",
+              selectedColor: "",
+            },
+            currentPlayerTurn: 1,
+            boardState: [],
+          },
+        },
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "unable to validate user at this time" });
     }
   },
 };

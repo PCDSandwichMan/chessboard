@@ -15,26 +15,30 @@ const initialState = {
 
 const gameReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    // - Used for board set mainly on load or refresh
     case constants.SET_BOARD_STATE:
       return {
         ...state,
+        currentPlayerTurn: 1,
         boardState: payload,
       };
+
+    // - Used for pawn movement for both players
     case constants.MOVE_PAWN:
-      let newerBoard = state.boardState.map((rowArr) => rowArr);
+      let newActiveBoard = state.boardState.map((rowArr) => rowArr);
       const tileType =
-        newerBoard[payload.oldLocation[0]][payload.oldLocation[1]];
-      newerBoard[payload.oldLocation[0]][payload.oldLocation[1]] = 0;
-      newerBoard[payload.newLocation[0]][payload.newLocation[1]] = tileType;
+        newActiveBoard[payload.oldLocation[0]][payload.oldLocation[1]];
+      newActiveBoard[payload.oldLocation[0]][payload.oldLocation[1]] = 0;
+      newActiveBoard[payload.newLocation[0]][payload.newLocation[1]] = tileType;
 
       return {
         ...state,
-        boardState: newerBoard,
+        boardState: newActiveBoard,
       };
 
+    // - Used to designate with tile should be highlighted
     case constants.HIGHLIGHT_OPTIONS:
-      // todo export to helper or other action
-      let newBoard = state.boardState.map((rowArr) => {
+      let highlightedBoard = state.boardState.map((rowArr) => {
         return rowArr.map((columnValue) => {
           if (columnValue === -1) {
             return 0;
@@ -42,12 +46,13 @@ const gameReducer = (state = initialState, { type, payload }) => {
           return columnValue;
         });
       });
-      payload.forEach(([row, column]) => (newBoard[row][column] = -1));
+      payload.forEach(([row, column]) => (highlightedBoard[row][column] = -1));
       return {
         ...state,
-        boardState: newBoard,
+        boardState: highlightedBoard,
       };
 
+    // - Used to remove highlights from the board after movement
     case constants.REMOVE_HIGHLIGHTS:
       return {
         ...state,
@@ -61,12 +66,14 @@ const gameReducer = (state = initialState, { type, payload }) => {
         }),
       };
 
+    // - Used multiple places just to simply swap the active characters turn
     case constants.SWAP_TURN:
       return {
         ...state,
         currentPlayerTurn: state.currentPlayerTurn === 1 ? 2 : 1,
       };
 
+    // - Used to set the users preference |in lifted state mainly so that we can persist it|
     case constants.SET_CONFIG:
       if (payload.playerType === 1) {
         return {
@@ -86,11 +93,13 @@ const gameReducer = (state = initialState, { type, payload }) => {
         };
       }
 
-    case constants.LOAD_EXISTING_STATE: 
+    // - Used to set the object of the old state to our current store
+    case constants.LOAD_EXISTING_STATE:
       return {
         ...payload,
       };
 
+    // - Fallthrough
     default:
       return state;
   }

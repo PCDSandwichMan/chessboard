@@ -24,4 +24,10 @@ router.post(
   userController.saveGameState
 );
 
+router.get(
+  "/state",
+  passport.authenticate("jwt", { session: false }),
+  userController.getUserGameState
+);
+
 module.exports = router;
