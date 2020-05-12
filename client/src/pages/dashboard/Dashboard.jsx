@@ -13,6 +13,14 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
 
   const handleSubmit = () => {
     //create 2d array
+    console.log(rowCount);
+    if (rowCount <= 5 || rowCount >= 16) {
+      alert(
+        "I intentionally limit this is the handleSubmit function of Dashboard.jsx since less than 5 and there is no game and more than 13 and the screen dies"
+      );
+      return;
+    }
+
     const newGameBoard = [];
     for (let i = 0; i < rowCount; i++) {
       // * Set player one pieces
@@ -56,7 +64,7 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
             value={rowCount}
             onChange={(e) => setRowCount(e.target.value)}
             min="5"
-            max="60"
+            max="15"
           />
           <button onClick={handleSubmit}>Submit</button>
         </div>
