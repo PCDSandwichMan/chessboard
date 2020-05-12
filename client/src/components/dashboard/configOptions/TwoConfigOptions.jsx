@@ -16,10 +16,14 @@ export const TwoConfigOptions = ({ setUserConfig, playerTwoConfig }) => {
   const [playerTwoColor, setPlayerTwoColor] = useState("");
   const [playerTwoShape, setPlayerTwoShape] = useState("");
 
+  // * Load previous state into local state
   useEffect(() => {
-    if (!playerTwoConfig.selectedColor && !playerTwoConfig.selectedIcon) {
-      setUserConfig(2, playerTwoColor, playerTwoShape);
-    }
+    setPlayerTwoColor(playerTwoConfig.selectedColor);
+    setPlayerTwoShape(playerTwoConfig.selectedIcon);
+  }, []);
+
+  useEffect(() => { 
+      setUserConfig(2, playerTwoColor, playerTwoShape); 
   }, [playerTwoColor, playerTwoShape]);
 
   return (

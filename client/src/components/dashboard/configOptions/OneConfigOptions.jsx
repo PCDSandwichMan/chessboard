@@ -15,10 +15,14 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
   const [playerOneColor, setPlayerOneColor] = useState("");
   const [playerOneShape, setPlayerOneShape] = useState("");
 
+  // * Load previous state into local state
   useEffect(() => {
-    if (!playerOneConfig.selectedColor && !playerOneConfig.selectedIcon) {
-      setUserConfig(1, playerOneColor, playerOneShape);
-    }
+    setPlayerOneShape(playerOneConfig.selectedIcon);
+    setPlayerOneColor(playerOneConfig.selectedColor);
+  }, []);
+
+  useEffect(() => {
+    setUserConfig(1, playerOneColor, playerOneShape);
   }, [playerOneColor, playerOneShape]);
 
   return (

@@ -14,13 +14,8 @@ import { setGameState } from "../../redux/actions/gameActions";
 import OneConfigOptions from "../../components/dashboard/configOptions/OneConfigOptions";
 import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfigOptions";
 
-function Dashboard({
-  setGameState,
-  currentPlayerTurn,
-  history,
-  state,
-  boardState,
-}) {
+function Dashboard({ setGameState, currentPlayerTurn, history, state, boardState }) {
+  
   const [rowCount, setRowCount] = useState(8);
 
   const handleBoardSetup = () => {
