@@ -6,7 +6,8 @@ module.exports = {
   async login(req, res) {
     try {
       const { username, password } = req.body;
-
+      console.log(req.body);
+      
       const findUser = await User.findOne({ username });
       if (!findUser)
         return res.status(401).json({ unauthorized: "invalid credentials" });
