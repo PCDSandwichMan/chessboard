@@ -1,7 +1,8 @@
 import React from "react";
 import "./tile.scss";
 
-function Tile({ row, column }) {
+function Tile({ row, column, active }) {
+  console.log(active);
   return (
     <div
       className={
@@ -9,7 +10,9 @@ function Tile({ row, column }) {
           ? "white whiteTileComponent"
           : "black whiteTileComponent"
       }
-    ></div>
+    >
+      {active ? "true" : "false"}
+    </div>
   );
 }
 

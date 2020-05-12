@@ -13,8 +13,13 @@ function Board({ tilesCol }) {
     }
 
     setBoard(
-      new Array(parseInt(tilesCol)).fill().map((val, idx) => {
-        return <Tile />;
+      new Array(parseInt(tilesCol)).fill().map((_, idx) => {
+        console.log(tilesCol, idx);
+        if (idx < tilesCol * 2) {
+          return true;
+        }
+        console.log("object");
+        return false;
       })
     );
   }, [tilesCol]);
@@ -24,7 +29,7 @@ function Board({ tilesCol }) {
       {board.map((tile, i) => (
         <div key={i}>
           {board.map((tile, j) => (
-            <Tile row={i} column={j} />
+            <Tile key={i + j} active={{ tile }} row={i} column={j} />
           ))}
         </div>
       ))}
