@@ -25,15 +25,15 @@ function Dashboard({
 }) {
   const [rowCount, setRowCount] = useState(8);
 
-  const handleBoardSetup = () => {
-    if (rowCount <= 5 || rowCount >= 16) {
+  const handleBoardSetup = (isNew) => {
+    if (rowCount < 5 || rowCount >= 16) {
       alert(
         "I intentionally limit this is the handleBoardSetup function of Dashboard.jsx since less than 5 and there is no game and more than 13 and the screen dies"
       );
       return;
     }
 
-    if (!boardState.length) {
+    if (!boardState.length || isNew) { 
       const newGameBoard = [];
       for (let i = 0; i < rowCount; i++) {
         // * Set player one pieces
@@ -62,6 +62,7 @@ function Dashboard({
           newGameBoard.push(new Array(+rowCount).fill().map((e) => 0));
         }
       }
+      console.log("object");
       setGameState(newGameBoard);
     }
   };
@@ -107,7 +108,11 @@ function Dashboard({
             type="number"
             className="dashboardView__input"
           />
-          <Button onClick={handleBoardSetup} variant="outlined" color="primary">
+          <Button
+            onClick={() => handleBoardSetup(true)}
+            variant="outlined"
+            color="primary"
+          >
             Create New Board
           </Button>
         </div>
