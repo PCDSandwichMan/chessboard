@@ -4,5 +4,29 @@
   width: 70px;
   height: 70px;
   @include F();
-  border: 1px solid red;
+  border: 1px solid #999;
+}
+
+.tile--white {
+  background: #000;
+}
+
+.tile--black {
+  background: #fff;
+}
+
+.tile__pawn {
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px #111;
+  cursor: pointer;
+}
+
+.pawn--red {
+  background: firebrick;
+}
+
+.pawn--grey {
+  background: #999;
 }

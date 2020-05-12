@@ -5,7 +5,23 @@ import "./tile.scss";
 import { connect } from "react-redux";
 
 export const Tile = ({ playerValue, row, column }) => {
-  return <div className="tileComponent">{playerValue}</div>;
+  return (
+    <div
+      className={
+        (row - column) % 2 === 0
+          ? "tile--white tileComponent"
+          : "tile--black tileComponent"
+      }
+    >
+      {playerValue !== 0 && (
+        <div
+          className={
+            playerValue == 1 ? "tile__pawn pawn--red" : "tile__pawn pawn--grey"
+          }
+        ></div>
+      )}
+    </div>
+  );
 };
 
 const mapStateToProps = (state) => ({});
