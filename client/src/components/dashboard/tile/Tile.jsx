@@ -1,12 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
+import "./tile.scss";
+
+// - Redux
 import { connect } from "react-redux";
 
-export const Tile = () => {
-  return (
-    <div>
-      <h1>Tile</h1>
-    </div>
-  );
+export const Tile = ({ playerValue, row, column }) => {
+  return <div className="tileComponent">{playerValue}</div>;
 };
 
 const mapStateToProps = (state) => ({});

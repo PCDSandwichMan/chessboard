@@ -1,3 +1,9 @@
+@import "../../../assets/scss/";
+
 .boardComponent {
-    
+  border: 1px solid red;
+}
+
+.board__row {
+  @include F();
 }

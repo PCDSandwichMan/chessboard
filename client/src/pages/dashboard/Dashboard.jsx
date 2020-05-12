@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./dashboard.scss";
 
 // - Components
-import Board from "../../old/board/Board";
+import Board from "../../components/dashboard/board/Board";
 
 // - Redux
 import { connect } from "react-redux";
@@ -27,10 +27,12 @@ function Dashboard({ setGameState }) {
         newGameBoard.push(new Array(+rowCount).fill().map((e) => 0));
       }
     }
-    console.log(newGameBoard);
-    return;
-    setGameState(setGameState);
+    setGameState(newGameBoard);
   };
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   return (
     <div className="dashboardView">
