@@ -131,7 +131,7 @@ function Dashboard({
                   : playerTwoConfig.selectedColor,
             }}
           >
-            <h1>Player {currentPlayerTurn === 1 ? "One" : "Two"}</h1>
+            <h1>Current Turn: Player {currentPlayerTurn === 1 ? "One" : "Two"}</h1>
           </div>
           <Board />
         </section>
