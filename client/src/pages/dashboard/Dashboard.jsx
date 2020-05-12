@@ -14,8 +14,15 @@ import { setGameState } from "../../redux/actions/gameActions";
 import OneConfigOptions from "../../components/dashboard/configOptions/OneConfigOptions";
 import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfigOptions";
 
-function Dashboard({ setGameState, currentPlayerTurn, history, state, boardState }) {
-  
+function Dashboard({
+  setGameState,
+  currentPlayerTurn,
+  history,
+  state,
+  boardState,
+  playerOneConfig,
+  playerTwoConfig,
+}) {
   const [rowCount, setRowCount] = useState(8);
 
   const handleBoardSetup = () => {
@@ -110,14 +117,13 @@ function Dashboard({ setGameState, currentPlayerTurn, history, state, boardState
         <OneConfigOptions />
         <section>
           <div
-            className={`
-            dashboardView__mainTtl
-            ${
-              currentPlayerTurn === 1
-                ? "dashboardView__mainTtl--playerOne"
-                : "dashboardView__mainTtl--playerTwo"
-            }
-            `}
+            className={`dashboardView__mainTtl`}
+            style={{
+              background:
+                currentPlayerTurn === 1
+                  ? playerOneConfig.selectedColor
+                  : playerTwoConfig.selectedColor,
+            }}
           >
             <h1>Player {currentPlayerTurn === 1 ? "One" : "Two"}</h1>
           </div>
@@ -131,6 +137,8 @@ function Dashboard({ setGameState, currentPlayerTurn, history, state, boardState
 
 const mapStateToProps = (state) => ({
   currentPlayerTurn: state.game.currentPlayerTurn,
+  playerOneConfig: state.game.playerOneConfig,
+  playerTwoConfig: state.game.playerTwoConfig,
   boardState: state.game.boardState,
   state: state,
 });
