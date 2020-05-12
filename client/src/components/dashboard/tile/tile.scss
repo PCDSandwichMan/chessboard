@@ -7,6 +7,10 @@
   border: 1px solid #999;
 }
 
+.tileComponent--highlight {
+  border: 3px solid #ffb700;
+}
+
 .tile--white {
   background: #000;
 }
@@ -20,6 +24,7 @@
   height: 70%;
   border-radius: 50%;
   box-shadow: 2px 2px 4px #111;
+  border: 1px solid #5a4d4d;
   cursor: pointer;
 }
 

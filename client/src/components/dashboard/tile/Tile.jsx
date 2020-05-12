@@ -4,20 +4,24 @@ import "./tile.scss";
 // - Redux
 import { connect } from "react-redux";
 
-export const Tile = ({ playerValue, row, column }) => {
+export const Tile = ({ playerValue, row, column, selectTile }) => {
+  const isEvenTile = (row - column) % 2 === 0;
   return (
     <div
-      className={
-        (row - column) % 2 === 0
-          ? "tile--white tileComponent"
-          : "tile--black tileComponent"
-      }
+      className={`
+      tileComponent
+      ${isEvenTile ? "tile--white" : "tile--black"}
+      ${playerValue === -1 ? "tileComponent--highlight" : ""}
+      `}
     >
       {playerValue !== 0 && (
         <div
-          className={
-            playerValue == 1 ? "tile__pawn pawn--red" : "tile__pawn pawn--grey"
-          }
+          onClick={() => selectTile(playerValue, row, column)}
+          className={`
+          tile__pawn 
+          ${playerValue === 2 ? "pawn--grey" : ""}
+          ${playerValue === 1 ? "pawn--red" : ""}
+          `}
         ></div>
       )}
     </div>
