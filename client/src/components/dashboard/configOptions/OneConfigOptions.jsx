@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./configOptions.scss";
 
 // - Material
@@ -11,6 +11,9 @@ import AlbumIcon from "@material-ui/icons/Album";
 import { connect } from "react-redux";
 
 export const OneConfigOptions = () => {
+  const [playerOneColor, setPlayerOneColor] = useState("");
+  const [playerOneShape, setPlayerOneShape] = useState("");
+
   return (
     <div className="configOptionsComponent">
       <h1>Player One</h1>
@@ -18,24 +21,28 @@ export const OneConfigOptions = () => {
         <h1>Colors</h1>
         <RadioGroup
           row
-          aria-label="position"
           name="position"
           defaultValue="top"
+          value={playerOneColor}
+          onChange={(e) => setPlayerOneColor(e.target.name)}
         >
           <FormControlLabel
-            value="bottom"
+            value="red"
+            name="red"
             control={<Radio color="primary" />}
             label="Red"
             labelPlacement="bottom"
           />
           <FormControlLabel
-            value="bottom"
+            value="green"
+            name="green"
             control={<Radio color="primary" />}
             label="Green"
             labelPlacement="bottom"
           />
           <FormControlLabel
-            value="bottom"
+            value="blue"
+            name="blue"
             control={<Radio color="primary" />}
             label="Blue"
             labelPlacement="bottom"
@@ -50,23 +57,28 @@ export const OneConfigOptions = () => {
           aria-label="position"
           name="position"
           defaultValue="top"
+          value={playerOneShape}
+          onChange={(e) => setPlayerOneShape(e.target.name)}
         >
           <FormControlLabel
-            value="bottom"
+            value="star"
+            name="star"
             control={<Radio color="primary" />}
-            label={<StarsIcon />}
+            label={<StarsIcon className="configOptions__icon" />}
             labelPlacement="bottom"
           />
           <FormControlLabel
-            value="bottom"
+            value="userIcon"
+            name="userIcon"
             control={<Radio color="primary" />}
-            label={<AccountCircleIcon />}
+            label={<AccountCircleIcon className="configOptions__icon" />}
             labelPlacement="bottom"
           />
           <FormControlLabel
-            value="bottom"
+            value="album"
+            name="album"
             control={<Radio color="primary" />}
-            label={<AlbumIcon />}
+            label={<AlbumIcon className="configOptions__icon" />}
             labelPlacement="bottom"
           />
         </RadioGroup>

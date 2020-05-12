@@ -30,7 +30,7 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
         // * Set Player 1
         newGameBoard.push(
           new Array(+rowCount).fill().map((e, j) => {
-            return (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1)
+            return (i % 2 === 0 && j % 2 === 0) || (i % 2 === 1 && j % 2 === 1)
               ? 1
               : 0;
           })
@@ -39,7 +39,7 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
         // * Set Player 2
         newGameBoard.push(
           new Array(+rowCount).fill().map((e, j) => {
-            return (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1)
+            return (i % 2 === 0 && j % 2 === 0) || (i % 2 === 1 && j % 2 === 1)
               ? 2
               : 0;
           })
