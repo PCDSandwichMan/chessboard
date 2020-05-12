@@ -10,17 +10,7 @@ import {
   movePawn,
   removeHighlights,
   swapTurn,
-} from "../../../redux/actions/gameActions";
-
-// - Material
-// * Player One
-import StarsIcon from "@material-ui/icons/Stars";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
-import AlbumIcon from "@material-ui/icons/Album";
-// * Player Two
-import GitHubIcon from "@material-ui/icons/GitHub";
-import AdbIcon from "@material-ui/icons/Adb";
-import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
+} from "../../../redux/actions/gameActions"; 
 
 export const Tile = ({
   playerValue,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./board.scss";
 
 // - Component
@@ -10,14 +10,6 @@ import { highlightOptions } from "../../../redux/actions/gameActions";
 
 export const Board = ({ boardState, highlightOptions }) => {
   const [activeTile, setActiveTile] = useState([-1, -1]);
-
-  // useEffect(() => {
-  //   console.log(boardState);
-  // }, [boardState]);
-
-  // useEffect(() => {
-  //   console.log(activeTile);
-  // }, [activeTile]);
 
   const selectTile = (player, row, column) => {
     highlightOptions(player, row, column, boardState);

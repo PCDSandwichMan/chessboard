@@ -1,0 +1,7 @@
+@import "../../assets/scss/";
+
+.homeView {
+  height: 100vh;
+  @include F();
+  background: #eee;
+}
