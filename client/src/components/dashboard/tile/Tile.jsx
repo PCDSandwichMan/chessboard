@@ -14,16 +14,23 @@ export const Tile = ({
   setActiveTile,
   movePawn,
   removeHighlights,
+  boardState,
 }) => {
   const isEvenTile = (row - column) % 2 === 0;
 
   const handleTileClick = () => {
-    if (isActive[0] !== -1) {
+    if (isActive[0] !== -1 && boardState[row][column] === -1) {
       movePawn(isActive, [row, column]);
       setActiveTile([-1, -1]);
-      removeHighlights()
+      removeHighlights();
     }
   };
+
+  const handlePawnClick = () => {
+    setActiveTile([row, column]);
+    selectTile(playerValue, row, column);
+  };
+
   return (
     <div
       onClick={handleTileClick}
@@ -36,10 +43,7 @@ export const Tile = ({
       {/* // todo implement playerValue !== 0 as a preview feature */}
       {playerValue > 0 && (
         <div
-          onClick={() => {
-            setActiveTile([row, column]);
-            selectTile(playerValue, row, column);
-          }}
+          onClick={handlePawnClick}
           className={`
           tile__pawn 
           ${playerValue === 2 ? "pawn--grey" : ""}
@@ -52,7 +56,9 @@ export const Tile = ({
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  boardState: state.game.boardState,
+});
 
 const mapDispatchToProps = { movePawn, removeHighlights };
 

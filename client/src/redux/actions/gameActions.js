@@ -59,7 +59,6 @@ export const highlightOptions = (player, row, column, board) => (dispatch) => {
   });
 };
 
-// todo remove highlights
 export const removeHighlights = () => (dispatch) => {
   dispatch({
     type: constants.REMOVE_HIGHLIGHTS,
