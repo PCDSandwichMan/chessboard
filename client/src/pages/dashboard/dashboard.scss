@@ -1,30 +1,36 @@
 @import "../../assets/scss/index";
 
 .dashboardView {
-  background-color: #111;
+  background: url("https://images.pexels.com/photos/2525903/pexels-photo-2525903.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+    center fixed;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   header {
-    border: 1px solid red;
-    height: 10vh;
+    background-color: #eee;
+    height: 7vh;
     @include F($d: column);
-    input {
-      font-size: 1.5rem;
-      padding: 5px;
+    .MuiButton-outlined {
+      padding: 0.56rem;
+      margin-left: 20px;
     }
   }
-  h3 {
-    color: #eee;
+}
+
+.dashboardView__input {
+  width: 30vw;
+  .MuiOutlinedInput-input {
+    padding: 0.8rem;
   }
 }
 
 main {
-  border: 1px solid red;
   margin: 5vh auto;
   width: 90vw;
   height: 80vh;
   @include F(space-evenly);
-  background: #999;
+  background: #ffffffa2;
+  border-radius: 10px;
 }
 
 .dashboardView__mainTtl {

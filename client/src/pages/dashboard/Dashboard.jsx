@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./dashboard.scss";
 
+// - Material
+import { TextField, Button } from "@material-ui/core";
+
 // - Components
 import Board from "../../components/dashboard/board/Board";
 
@@ -59,16 +62,19 @@ function Dashboard({ setGameState, currentPlayerTurn }) {
   return (
     <div className="dashboardView">
       <header>
-        <h3>How wide should the board be?</h3>
         <div>
-          <input
-            type="number"
+          <TextField
+            label="How wide do you want your board to be?"
+            color="primary"
+            variant="outlined"
             value={rowCount}
             onChange={(e) => setRowCount(e.target.value)}
-            min="5"
-            max="15"
+            type="number"
+            className="dashboardView__input"
           />
-          <button onClick={handleSubmit}>Submit</button>
+          <Button onClick={handleSubmit} variant="outlined" color="primary">
+            Create New Board
+          </Button>
         </div>
       </header>
       <main>
