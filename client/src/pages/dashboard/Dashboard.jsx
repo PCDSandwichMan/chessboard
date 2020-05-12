@@ -7,7 +7,7 @@ import constants from "../../redux/constants";
 import { TextField, Button } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 // - Components
-import Board from "../../components/dashboard/board/Board";
+import Board from "../../components/dashboard/board/Board.jsx";
 // - Redux
 import { connect } from "react-redux";
 import { setGameState } from "../../redux/actions/gameActions";

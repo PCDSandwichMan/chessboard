@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./board.scss";
 
 // - Component
-import Tile from "../tile/Tile";
+import Tile from "../tile/Tile.jsx";
 
 // - Redux
 import { connect } from "react-redux";

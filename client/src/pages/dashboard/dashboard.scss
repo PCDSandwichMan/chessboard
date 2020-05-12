@@ -18,7 +18,7 @@
       margin-left: 20px;
     }
   }
- 
+
   @media screen and (max-device-width: 1150px) {
     height: auto;
     min-height: 80vh;
@@ -84,7 +84,8 @@
   position: relative;
   margin: 5vh auto;
   width: 90vw;
-  height: 80vh;
+  min-height: 80vh;
+  padding: 10px 0;
   @include F(space-evenly);
   background: #ffffffa2;
   border-radius: 10px;
