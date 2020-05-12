@@ -14,7 +14,7 @@ export const Board = ({ boardState, highlightOptions }) => {
   const selectTile = (player, row, column) => {
     highlightOptions(player, row, column, boardState);
   };
-
+  
   return (
     <div className="boardComponent">
       {/* // - Render tiles row by row */}

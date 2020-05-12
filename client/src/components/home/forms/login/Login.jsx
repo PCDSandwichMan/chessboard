@@ -38,7 +38,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
 
   return (
     <div>
-      <div className="home__form">
+      <div className="home__form" data-test="LoginView">
         <h2>Login</h2>
         <div>
           <TextField

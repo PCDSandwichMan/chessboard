@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./home.scss";
 
 // - Components
-import Login from "../../components/home/forms/login/Login";
-import Register from "../../components/home/forms/register/Register";
+import Login from "../../components/home/forms/login/Login.jsx";
+import Register from "../../components/home/forms/register/Register.jsx";
 
 function Home() {
   const [pageState, setPageState] = useState("login");
