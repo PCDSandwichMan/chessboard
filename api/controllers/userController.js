@@ -28,14 +28,15 @@ module.exports = {
   async createNewUser(req, res) {
     try {
       const { username, password } = req.body;
+      console.log(username, password);
       if (!username || !password) {
         return res
           .status(400)
           .json({ error: "must include username and password" });
       }
-
+      let saveUser;
       if (!(await User.findOne({ username }))) {
-        await User.create({
+        saveUser = await User.create({
           username,
           password,
         });
@@ -43,7 +44,8 @@ module.exports = {
         return res.status(400).json({ error: "user already exists" });
       }
 
-      return res.status(201).json({ user: "new user created" });
+      const token = await helpers.genToken(saveUser._id);
+      return res.status(201).json({ token });
     } catch (error) {
       console.log(error);
       return res.status(500).json({ error: "unable to create new user" });

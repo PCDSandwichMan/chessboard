@@ -19,6 +19,8 @@ export const Register = ({ setPageState, history }) => {
     axios
       .post(`${constants.BASE_URL}/user/create`, { ...credentials })
       .then((res) => {
+        console.log(res.data);
+        localStorage.setItem("token", `Bearer ${res.data.token}`);
         history.push("/dashboard");
       })
       .catch((err) => console.log(err));

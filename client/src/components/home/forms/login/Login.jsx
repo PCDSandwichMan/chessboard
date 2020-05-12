@@ -20,7 +20,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
   const handleLogin = () => {
     axios
       .post(`${constants.BASE_URL}/user/login`, { ...credentials })
-      .then((res) => { 
+      .then((res) => {
         setExistingState(res.data.state.game);
         localStorage.setItem("token", `Bearer ${res.data.token}`);
         history.push("/dashboard");
@@ -53,6 +53,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
             value={credentials.password}
             className="home__form__input"
             label="Password"
+            type="password"
           />
         </div>
         <div>
