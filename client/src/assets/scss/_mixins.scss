@@ -6,3 +6,9 @@
   justify-content: $j;
   align-items: $a;
 }
+@mixin P($t: 50%, $r: 50%, $tx: 50%, $ty: -50%) {
+  position: absolute !important;
+  top: $t !important;
+  right: $r !important;
+  transform: translate($tx, $ty) !important;
+}

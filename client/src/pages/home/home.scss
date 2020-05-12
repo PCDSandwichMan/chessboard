@@ -1,7 +1,43 @@
 @import "../../assets/scss/";
 
 .homeView {
+  padding: 10px 0;
   height: 100vh;
+  background: url("https://static.wixstatic.com/media/cfd4c6_abf8386a5f5d469b90ad14d66498c1e2~mv2_d_2500_1667_s_2.jpg/v1/fill/w_1439,h_296,al_c,q_85,usm_0.66_1.00_0.01/cfd4c6_abf8386a5f5d469b90ad14d66498c1e2~mv2_d_2500_1667_s_2.webp");
+  background-size: cover;
+  main {
+    @include F();
+  }
+  @media screen and (max-device-width: 1050px) {
+    padding: 20px 0;
+  }
+  @media screen and (max-device-width: 610px) {
+    height: 100vh;
+    @include F()
+  }
+}
+
+.home__background {
+  background: #111;
+  width: 100vw;
+  margin: 0 0 1em;
   @include F();
-  background: #eee;
+  padding: 10px 0;
+  img {
+    height: 150px;
+    margin: 0 10px;
+  }
+  @media screen and (max-device-width: 1050px) {
+    img {
+      height: 100px;
+    }
+  }
+  @media screen and (max-device-width: 748px) {
+    img {
+      height: 75px;
+    }
+  }
+  @media screen and (max-device-width: 610px) {
+    display: none;
+  }
 }

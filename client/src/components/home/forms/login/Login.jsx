@@ -61,46 +61,43 @@ export const Login = ({ setPageState, history, setExistingState }) => {
     });
   };
 
+  const drivenLogo =
+    "https://static.wixstatic.com/media/cfd4c6_7652149ff9d14692aeb9507504bbc55e~mv2.png/v1/fill/w_208,h_208,al_c,q_85,usm_0.66_1.00_0.01/drvd-distribution.webp";
+
   return (
-    <div>
-      <div className="home__form" data-test="LoginView">
-        <h2>Login</h2>
-        <div>
-          <TextField
-            onChange={handleChange}
-            name="username"
-            value={credentials.username}
-            className="home__form__input"
-            label="Username"
-          />
-          <TextField
-            onChange={handleChange}
-            name="password"
-            value={credentials.password}
-            className="home__form__input"
-            label="Password"
-            type="password"
-          />
-        </div>
-        <p className="home__error">{error}</p>
-        <div>
-          <Button
-            className="home__form__btn"
-            variant="outlined"
-            color="primary"
-            onClick={handleLogin}
-          >
-            Login
-          </Button>
-          <Button
-            className="home__form__btn"
-            variant="outlined"
-            onClick={() => setPageState("register")}
-          >
-            Create Account
-          </Button>
-        </div>
+    <div className="home__form" data-test="LoginView">
+      <h2>Welcome</h2>
+      <img src={drivenLogo} alt="driven logo" />
+      <div className="home__form__fieldsContainer">
+        <TextField
+          onChange={handleChange}
+          name="username"
+          value={credentials.username}
+          className="home__form__input"
+          label="Username"
+        />
+        <TextField
+          onChange={handleChange}
+          name="password"
+          value={credentials.password}
+          className="home__form__input"
+          label="Password"
+          type="password"
+        />
       </div>
+      <p className="home__error">{error}</p>
+      <div
+        className="home__form__btn"
+        variant="outlined"
+        color="primary"
+        onClick={handleLogin}
+      >
+        <button>Login</button>
+      </div>
+      <p className="home__form__signUp">
+        Don’t have an account?{" "}
+        <span onClick={() => setPageState("register")}>Sign Up</span>
+      </p>
     </div>
   );
 };
