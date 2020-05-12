@@ -11,9 +11,9 @@ import { highlightOptions } from "../../../redux/actions/gameActions";
 export const Board = ({ boardState, highlightOptions }) => {
   const [activeTile, setActiveTile] = useState([-1, -1]);
 
-  // useEffect(() => {
-  //   console.log(boardState);
-  // }, [boardState]);
+  useEffect(() => {
+    console.log(boardState);
+  }, [boardState]);
 
   // useEffect(() => {
   //   console.log(activeTile);

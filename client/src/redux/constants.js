@@ -4,5 +4,6 @@ module.exports = {
   // - Game Reducer
   SET_BOARD_STATE: "gameReducer:set-board-state",
   HIGHLIGHT_OPTIONS: "gameReducer:hight-options",
+  REMOVE_HIGHLIGHTS: "gameReducer:remove-highlights",
   MOVE_PAWN: "gameReducer:move-pawn",
 };

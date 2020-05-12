@@ -59,7 +59,15 @@ export const highlightOptions = (player, row, column, board) => (dispatch) => {
   });
 };
 
-const movePawn = (oldLocation, newLocation) => (dispatch) => {
+// todo remove highlights
+export const removeHighlights = () => (dispatch) => {
+  dispatch({
+    type: constants.REMOVE_HIGHLIGHTS,
+  });
+};
+
+export const movePawn = (oldLocation, newLocation) => (dispatch) => {
+  console.log(oldLocation, newLocation);
   dispatch({
     type: constants.MOVE_PAWN,
     payload: {
