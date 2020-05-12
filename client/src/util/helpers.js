@@ -18,29 +18,67 @@ export const ActiveIcon = ({
   playerType,
   ...rest
 }) => {
+  console.log(playerTwoConfig.selectedColor);
   if (playerType === 1) {
-    switch (playerOneConfig) {
+    switch (playerOneConfig.selectedIcon) {
       case "star":
-        return <StarsIcon {...rest} />;
+        return (
+          <StarsIcon
+            style={{ color: playerOneConfig.selectedColor }}
+            {...rest}
+          />
+        );
       case "userIcon":
-        return <AccountCircleIcon {...rest} />;
+        return (
+          <AccountCircleIcon
+            style={{ color: playerOneConfig.selectedColor }}
+            {...rest}
+          />
+        );
       case "album":
-        return <AlbumIcon {...rest} />;
+        return (
+          <AlbumIcon
+            style={{ color: playerOneConfig.selectedColor }}
+            {...rest}
+          />
+        );
       default:
         console.log("Icon not found");
-        return <HelpIcon {...rest} />;
+        return (
+          <HelpIcon
+            style={{ color: playerOneConfig.selectedColor }}
+            {...rest}
+          />
+        );
     }
   } else if (playerType === 2) {
-    switch (playerTwoConfig) {
+    switch (playerTwoConfig.selectedIcon) {
       case "gitHubIcon":
-        return <GitHubIcon {...rest} />;
+        return (
+          <GitHubIcon
+            style={{ color: playerTwoConfig.selectedColor }}
+            {...rest}
+          />
+        );
       case "android":
-        return <AdbIcon {...rest} />;
+        return (
+          <AdbIcon style={{ color: playerTwoConfig.selectedColor }} {...rest} />
+        );
       case "emoji":
-        return <EmojiEmotionsIcon {...rest} />;
+        return (
+          <EmojiEmotionsIcon
+            style={{ color: playerTwoConfig.selectedColor }}
+            {...rest}
+          />
+        );
       default:
         console.log("Icon not found");
-        return <HelpIcon {...rest} />;
+        return (
+          <HelpIcon
+            style={{ color: playerTwoConfig.selectedColor }}
+            {...rest}
+          />
+        );
     }
   } else {
     return <HelpIcon {...rest} />;

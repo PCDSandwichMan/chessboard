@@ -66,15 +66,15 @@ export const Tile = ({
       {/* // todo implement playerValue !== 0 as a preview feature */}
       {playerValue > 0 && (
         <ActiveIcon
-          playerOneConfig={playerOnePref.selectedIcon}
-          playerTwoConfig={playerTwoPref.selectedIcon}
+          playerOneConfig={playerOnePref}
+          playerTwoConfig={playerTwoPref}
           playerType={playerValue}
           fontSize="large"
           onClick={handlePawnClick}
+          // ${playerValue === 2 ? "pawn--grey" : ""}
+          // ${playerValue === 1 ? "pawn--red" : ""}
           className={`
           tile__pawn 
-          ${playerValue === 2 ? "pawn--grey" : ""}
-          ${playerValue === 1 ? "pawn--red" : ""}
           ${row === isActive[0] && column === isActive[1] ? "pawn--active" : ""}
           `}
         />
