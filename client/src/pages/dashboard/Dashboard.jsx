@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./dashboard.scss";
-
+// - Http
+import axios from "axios";
+import constants from "../../redux/constants";
 // - Material
 import { TextField, Button } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
 // - Components
 import Board from "../../components/dashboard/board/Board";
-
 // - Redux
 import { connect } from "react-redux";
 import { setGameState } from "../../redux/actions/gameActions";
 import OneConfigOptions from "../../components/dashboard/configOptions/OneConfigOptions";
 import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfigOptions";
 
-function Dashboard({ setGameState, currentPlayerTurn, history }) {
+function Dashboard({ setGameState, currentPlayerTurn, history, state }) {
   const [rowCount, setRowCount] = useState(8);
 
   const handleBoardSetup = () => {
@@ -63,6 +63,14 @@ function Dashboard({ setGameState, currentPlayerTurn, history }) {
     history.push("/");
   };
 
+  const handleUserGameSave = () => {
+    console.log(state)
+    axios
+      .post(`${constants.BASE_URL}/user/save`, { ...state })
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="dashboardView">
       <header>
@@ -84,7 +92,8 @@ function Dashboard({ setGameState, currentPlayerTurn, history }) {
           </Button>
         </div>
       </header>
-      <main>
+      <main className="dashboard__main">
+        <p onClick={handleUserGameSave}>Save Game</p>
         <OneConfigOptions />
         <section>
           <div
@@ -109,6 +118,7 @@ function Dashboard({ setGameState, currentPlayerTurn, history }) {
 
 const mapStateToProps = (state) => ({
   currentPlayerTurn: state.game.currentPlayerTurn,
+  state: state,
 });
 
 const mapActionsToProps = { setGameState };

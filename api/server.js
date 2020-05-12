@@ -1,15 +1,26 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const morgan = require("morgan");
+const cors = require("cors");
+const compression = require("compression");
+const config = require("./utils/config");
+const helmet = require("helmet");
+const path = require("path");
 
 const app = express();
-const config = require("./utils/config");
 
 app.use(cors());
+app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
+
+// - Sets for prod (specified before for morgan set before routes)
+if (process.env.NODE_ENV === "production") {
+  app.disable("x-powered-by");
+  app.use(compression());
+  app.use(morgan("common"));
+}
 
 mongoose.connect(config.MONGO_URI, {
   useNewUrlParser: true,

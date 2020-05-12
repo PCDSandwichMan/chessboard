@@ -39,13 +39,27 @@
   }
 }
 
-main {
+.dashboard__main {
+  position: relative;
   margin: 5vh auto;
   width: 90vw;
   height: 80vh;
   @include F(space-evenly);
   background: #ffffffa2;
   border-radius: 10px;
+  p {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 0.9rem;
+    color: #0084ff;
+    cursor: pointer;
+    transition: color 30ms ease-in-out;
+    &:hover {
+      text-decoration: underline;
+      color: #00a2ff;
+    }
+  }
 }
 
 .dashboardView__mainTtl {

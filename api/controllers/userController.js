@@ -25,6 +25,7 @@ module.exports = {
   },
   async saveGameState(req, res) {
     try {
+      console.log(req.body)
       res.status(201).json({ save: "game state has been saved" });
     } catch (error) {
       console.log(error);
