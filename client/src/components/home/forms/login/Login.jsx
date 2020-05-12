@@ -17,6 +17,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
     password: "",
   });
 
+  // - This will set the global state if previously exiting
   const handleLogin = () => {
     axios
       .post(`${constants.BASE_URL}/user/login`, { ...credentials })

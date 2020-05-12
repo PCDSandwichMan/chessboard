@@ -86,8 +86,7 @@ const gameReducer = (state = initialState, { type, payload }) => {
         };
       }
 
-    case constants.LOAD_EXISTING_STATE:
-      console.log(payload);
+    case constants.LOAD_EXISTING_STATE: 
       return {
         ...payload,
       };

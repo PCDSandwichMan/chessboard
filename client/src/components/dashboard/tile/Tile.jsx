@@ -29,6 +29,7 @@ export const Tile = ({
 }) => {
   const isEvenTile = (row - column) % 2 === 0;
 
+  // - Steps: moves player in 2d array, remove highlight including active, swap turns
   const handleTileClick = () => {
     if (isActive[0] !== -1 && boardState[row][column] === -1) {
       movePawn(isActive, [row, column]);
@@ -38,6 +39,7 @@ export const Tile = ({
     }
   };
 
+  // - Steps: sets the active tile for glow, and options for glow |has to be players turn| 
   const handlePawnClick = () => {
     if (playerValue !== currentPlayerTurn) return;
     setActiveTile([row, column]);
@@ -52,17 +54,14 @@ export const Tile = ({
       ${isEvenTile ? "tile--white" : "tile--black"}
       ${playerValue === -1 ? "tileComponent--highlight" : ""}
       `}
-    >
-      {/* // todo implement playerValue !== 0 as a preview feature */}
+    > 
       {playerValue > 0 && (
         <ActiveIcon
           playerOneConfig={playerOnePref}
           playerTwoConfig={playerTwoPref}
           playerType={playerValue}
           fontSize="large"
-          onClick={handlePawnClick}
-          // ${playerValue === 2 ? "pawn--grey" : ""}
-          // ${playerValue === 1 ? "pawn--red" : ""}
+          onClick={handlePawnClick} 
           className={`
           tile__pawn 
           ${row === isActive[0] && column === isActive[1] ? "pawn--active" : ""}

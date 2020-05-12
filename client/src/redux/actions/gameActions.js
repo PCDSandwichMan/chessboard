@@ -1,54 +1,15 @@
 import constants from "../../redux/constants";
+import { moveOptions } from "../../util/helpers";
 
-export const setGameState = (gameState) => (dispatch) => { 
+// - Used to set the initial game state of the board if not existing
+export const setGameState = (gameState) => (dispatch) => {
   dispatch({
     type: constants.SET_BOARD_STATE,
     payload: gameState,
   });
 };
 
-// todo move to util helpers
-const moveOptions = (player, row, column, board) => {
-  /*======================
-    the gist of this checks for bounds and if another piece is there 
-    ======================*/
-  let moves = [];
-  if (player === 1) {
-    // * Left Move (for player one)
-    if (
-      row + 1 <= board.length - 1 &&
-      column - 1 >= 0 &&
-      board[row + 1][column - 1] <= 0
-    ) {
-      moves.push([row + 1, column - 1]);
-    }
-    // * Right Move (for player one)
-    if (
-      row + 1 <= board.length - 1 &&
-      column + 1 <= board.length - 1 &&
-      board[row + 1][column + 1] <= 0
-    ) {
-      moves.push([row + 1, column + 1]);
-    }
-  } else if (player === 2) {
-    // * Left Move (for player two)
-    if (row - 1 >= 0 && column - 1 >= 0 && board[row - 1][column - 1] <= 0) {
-      moves.push([row - 1, column - 1]);
-    }
-    // * Right Move (for player two)
-    if (
-      row - 1 >= 0 &&
-      column + 1 <= board.length - 1 &&
-      board[row - 1][column + 1] <= 0
-    ) {
-      moves.push([row - 1, column + 1]);
-    }
-  } else {
-    throw new Error("Invalid Player");
-  }
-  return moves;
-};
-
+// - Used to high tile options after clicking pawn
 export const highlightOptions = (player, row, column, board) => (dispatch) => {
   const getOptions = moveOptions(player, row, column, board);
 
@@ -58,12 +19,14 @@ export const highlightOptions = (player, row, column, board) => (dispatch) => {
   });
 };
 
+// - Removes all highlights on predicted tiles
 export const removeHighlights = () => (dispatch) => {
   dispatch({
     type: constants.REMOVE_HIGHLIGHTS,
   });
 };
 
+// - Moves the paws to the selected tile as long as it meets the constraints and stays in bounds
 export const movePawn = (oldLocation, newLocation) => (dispatch) => {
   dispatch({
     type: constants.MOVE_PAWN,
@@ -74,15 +37,17 @@ export const movePawn = (oldLocation, newLocation) => (dispatch) => {
   });
 };
 
+// - Handle the current turn for each player to prevent consecutive moves
 export const swapTurn = () => (dispatch) => {
   dispatch({
     type: constants.SWAP_TURN,
   });
 };
 
+// - This sets the users configuration for tile and pawn color for ether player 1 or 2
 export const setUserConfig = (playerType, selectedColor, selectedIcon) => (
   dispatch
-) => { 
+) => {
   dispatch({
     type: constants.SET_CONFIG,
     payload: {
@@ -93,9 +58,10 @@ export const setUserConfig = (playerType, selectedColor, selectedIcon) => (
   });
 };
 
-export const setExistingState = oldState => dispatch => {
+// - This fires on login and will assign the only state object to the store if existing
+export const setExistingState = (oldState) => (dispatch) => {
   dispatch({
     type: constants.LOAD_EXISTING_STATE,
-    payload: oldState
-  })
-}
+    payload: oldState,
+  });
+};

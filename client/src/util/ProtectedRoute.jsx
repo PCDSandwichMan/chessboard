@@ -1,17 +1,24 @@
 import React from "react";
+// - Util
+import { tokenIsValid } from "../util/helpers";
+// - Http
 import { Route, Redirect } from "react-router";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) =>
-      localStorage.getItem("token") ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/" />
-      )
-    }
-  />
-);
+// - Redirect to home if no login token or expired
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const token = localStorage.getItem("token");
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        token && tokenIsValid(token) ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
+};
 
 export default ProtectedRoute;

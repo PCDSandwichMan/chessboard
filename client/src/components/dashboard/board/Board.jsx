@@ -17,6 +17,7 @@ export const Board = ({ boardState, highlightOptions }) => {
 
   return (
     <div className="boardComponent">
+      {/* // - Render tiles row by row */}
       {boardState.map((row, rowIndex) => (
         <div key={rowIndex} className="board__row">
           {row.map((column, colIdx) => (

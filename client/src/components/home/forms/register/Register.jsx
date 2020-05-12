@@ -15,11 +15,11 @@ export const Register = ({ setPageState, history }) => {
     confirmPassword: "",
   });
 
+  // - Immediate redirect to dashboard if successful
   const handleRegistration = () => {
     axios
       .post(`${constants.BASE_URL}/user/create`, { ...credentials })
-      .then((res) => {
-        console.log(res.data);
+      .then((res) => { 
         localStorage.setItem("token", `Bearer ${res.data.token}`);
         history.push("/dashboard");
       })
