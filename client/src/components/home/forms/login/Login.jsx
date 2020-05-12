@@ -17,8 +17,18 @@ export const Login = ({ setPageState, history, setExistingState }) => {
     password: "",
   });
 
+  const [error, setError] = useState("");
+
   // - This will set the global state if previously exiting
   const handleLogin = () => {
+    if (!credentials.username || !credentials.password) {
+      setTimeout(() => {
+        setError("");
+      }, 4000);
+      setError("All fields are required");
+      return;
+    }
+
     axios
       .post(`${constants.BASE_URL}/user/login`, { ...credentials })
       .then((res) => {
@@ -26,7 +36,22 @@ export const Login = ({ setPageState, history, setExistingState }) => {
         localStorage.setItem("token", `Bearer ${res.data.token}`);
         history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch(({ response }) => {
+        setTimeout(() => {
+          setError("");
+        }, 4000);
+        switch (response.status) {
+          case 400:
+            setError("All fields are required");
+            break;
+          case 401:
+            setError("Invalid credentials");
+            break;
+          default:
+            setError("An error occurred while attempting to login");
+            break;
+        }
+      });
   };
 
   const handleChange = (e) => {
@@ -57,6 +82,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
             type="password"
           />
         </div>
+        <p className="home__error">{error}</p>
         <div>
           <Button
             className="home__form__btn"

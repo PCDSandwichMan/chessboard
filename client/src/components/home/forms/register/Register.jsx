@@ -15,15 +15,41 @@ export const Register = ({ setPageState, history }) => {
     confirmPassword: "",
   });
 
+  const [error, setError] = useState("");
+
   // - Immediate redirect to dashboard if successful
   const handleRegistration = () => {
+    if (
+      !credentials.username ||
+      !credentials.password ||
+      !credentials.confirmPassword
+    ) {
+      setTimeout(() => {
+        setError("");
+      }, 4000);
+      setError("All fields are required");
+      return;
+    }
+
     axios
       .post(`${constants.BASE_URL}/user/create`, { ...credentials })
-      .then((res) => { 
+      .then((res) => {
         localStorage.setItem("token", `Bearer ${res.data.token}`);
         history.push("/dashboard");
       })
-      .catch((err) => console.log(err));
+      .catch(({ response }) => {
+        setTimeout(() => {
+          setError("");
+        }, 4000);
+        switch (response.status) {
+          case 400:
+            setError("Username taken");
+            break;
+          default:
+            setError("An error occurred while creating you account");
+            break;
+        }
+      });
   };
 
   const handleChange = (e) => {
@@ -62,6 +88,7 @@ export const Register = ({ setPageState, history }) => {
             value={credentials.confirmPassword}
           />
         </div>
+        <p className="home__error">{error}</p>
         <div>
           <Button
             className="home__form__btn"
