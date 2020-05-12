@@ -25,6 +25,7 @@ function Dashboard({
 }) {
   const [rowCount, setRowCount] = useState(8);
 
+  // todo matt: extract to helper
   const handleBoardSetup = (isNew) => {
     if (rowCount < 5 || rowCount >= 16) {
       alert(
@@ -98,7 +99,7 @@ function Dashboard({
         <div className="dashboard__logout" onClick={handleLogout}>
           <ExitToAppIcon className="dashboard__logout__icon" />
         </div>
-        <div>
+        <div className="dashboard__controlsWrapper">
           <TextField
             label="How wide do you want your board to be?"
             color="primary"

@@ -7,13 +7,46 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
+  padding: 10px;
+  overflow-x: hidden;
   header {
     background-color: #eee;
-    height: 7vh;
+    height: 65px;
     @include F($d: column);
     .MuiButton-outlined {
       padding: 0.56rem;
       margin-left: 20px;
+    }
+  }
+ 
+  @media screen and (max-device-width: 1150px) {
+    height: auto;
+    min-height: 80vh;
+    .dashboard__controlsWrapper {
+      @include F();
+      height: 100%;
+    }
+    header {
+      .MuiButton-outlined {
+        padding: 0.3rem;
+        font-size: 0.8rem;
+        margin-left: 20px;
+      }
+    }
+  }
+  @media screen and (max-device-width: 992px) {
+    header {
+      .dashboard__controlsWrapper {
+        width: 80vw;
+      }
+    }
+  }
+
+  @media screen and (max-device-width: 598px) {
+    header {
+      .MuiButton-outlined {
+        font-size: 0.7rem;
+      }
     }
   }
 }
@@ -37,6 +70,14 @@
   .MuiOutlinedInput-input {
     padding: 0.8rem;
   }
+  @media screen and (max-device-width: 1150px) {
+    .MuiOutlinedInput-input {
+      padding: 0.5rem;
+    }
+  }
+  @media screen and (max-device-width: 1010px) {
+    width: 50vw !important;
+  }
 }
 
 .dashboard__main {
@@ -58,6 +99,18 @@
     &:hover {
       text-decoration: underline;
       color: #00a2ff;
+    }
+  }
+  @media screen and (max-device-width: 1150px) {
+    flex-direction: column;
+    height: auto;
+    padding: 50px 0;
+    min-height: 80vh;
+  }
+
+  @media screen and (max-device-width: 600px) {
+    h1 {
+      font-size: 1rem;
     }
   }
 }

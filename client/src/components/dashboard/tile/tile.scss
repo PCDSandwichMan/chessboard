@@ -1,10 +1,26 @@
 @import "../../../assets/scss/";
 
 .tileComponent {
-  width: 70px;
-  height: 70px;
+  width: 5vw;
+  height: 5vw;
   @include F();
-  border: 1px solid #999; 
+  @media screen and (min-device-width: 1500px) {
+    width: 80px;
+    height: 80px;
+  }
+  border: 1px solid #999;
+  @media screen and (max-device-width: 1150px) {
+    width: 5.5vw !important;
+    height: 5.5vw !important;
+  }
+  @media screen and (max-device-width: 750px) {
+    width: 7vw !important;
+    height: 7vw !important;
+  }
+  @media screen and (max-device-width: 588px) {
+    width: 8vw !important;
+    height: 8vw !important;
+  }
 }
 
 .tileComponent--highlight {
@@ -20,13 +36,17 @@
 }
 
 .tile__pawn {
-  width: 10rem;
-  height: 10rem;
+  width: 3.5vw !important;
+  height: 3.5vw !important;
   border-radius: 50%;
   box-shadow: 2px 2px 4px #111;
   border: 1px solid #5a4d4d;
   cursor: pointer;
   @include F();
+  @media screen and (max-device-width: 1150px) {
+    width: 4vw !important;
+    height: 4vw !important;
+  }
 }
 
 .pawn--active {

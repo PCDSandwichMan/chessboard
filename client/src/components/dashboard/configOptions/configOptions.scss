@@ -10,9 +10,22 @@
   h1 {
     font-weight: 400;
     font-size: 2rem;
-    font-size: 2rem;
     text-decoration: underline;
   }
+  @media screen and (max-device-width: 1320px) {
+    h1 {
+      font-size: 1.4rem;
+    }
+  }
+  @media screen and (max-device-width: 1150px) {
+    width: 90%;
+    margin: 0 0 10px;
+  }
+  @media screen and (max-device-width: 750px) {
+    h1 {
+      font-size: 1.2rem;
+    }
+  } 
 }
 
 .configOptions__container {
@@ -24,8 +37,29 @@
     font-size: 1.5rem;
     font-weight: 300;
   }
+  @media screen and (max-device-width: 1320px) {
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+  @media screen and (max-device-width: 1150px) {
+    margin: 5px 0;
+    flex-direction: row;
+  }
+
+  @media screen and (max-device-width: 750px) {
+    h3 {
+      font-size: 1rem;
+    }
+    .MuiTypography-root {
+      font-size: 0.9rem !important;
+    }
+  }
 }
 
 .configOptions__icon {
   font-size: 2.5rem !important;
+  @media screen and (max-device-width: 1320px) {
+    font-size: 2rem !important;
+  }
 }

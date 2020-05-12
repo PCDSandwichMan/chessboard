@@ -2,6 +2,9 @@
 
 .boardComponent {
   border: 1px solid #111;
+  @media screen and (max-device-width: 1150px) {
+    margin: 0 0 20px;
+  }
 }
 
 .board__row {
