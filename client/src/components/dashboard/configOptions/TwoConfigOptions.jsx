@@ -10,13 +10,16 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 // - Redux
 import { connect } from "react-redux";
 import { setUserConfig } from "../../../redux/actions/gameActions";
+import gameReducer from "../../../redux/reducers/gameReducer";
 
-export const TwoConfigOptions = ({ setUserConfig }) => {
-  const [playerTwoColor, setPlayerTwoColor] = useState("orange");
-  const [playerTwoShape, setPlayerTwoShape] = useState("gitHubIcon");
+export const TwoConfigOptions = ({ setUserConfig, playerTwoConfig }) => {
+  const [playerTwoColor, setPlayerTwoColor] = useState("");
+  const [playerTwoShape, setPlayerTwoShape] = useState("");
 
   useEffect(() => {
-    setUserConfig(2, playerTwoColor, playerTwoShape);
+    if (!playerTwoConfig.selectedColor && !playerTwoConfig.selectedIcon) {
+      setUserConfig(2, playerTwoColor, playerTwoShape);
+    }
   }, [playerTwoColor, playerTwoShape]);
 
   return (
@@ -92,7 +95,9 @@ export const TwoConfigOptions = ({ setUserConfig }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  playerTwoConfig: state.game.playerTwoConfig,
+});
 
 const mapDispatchToProps = { setUserConfig };
 

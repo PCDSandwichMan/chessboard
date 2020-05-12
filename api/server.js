@@ -4,8 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const compression = require("compression");
 const config = require("./utils/config");
-const helmet = require("helmet");
-const path = require("path");
+const helmet = require("helmet"); 
 
 const app = express();
 

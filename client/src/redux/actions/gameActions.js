@@ -92,3 +92,10 @@ export const setUserConfig = (playerType, selectedColor, selectedIcon) => (
     },
   });
 };
+
+export const setExistingState = oldState => dispatch => {
+  dispatch({
+    type: constants.LOAD_EXISTING_STATE,
+    payload: oldState
+  })
+}

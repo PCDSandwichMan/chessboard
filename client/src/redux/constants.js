@@ -8,4 +8,5 @@ module.exports = {
   MOVE_PAWN: "gameReducer:move-pawn",
   SWAP_TURN: "gameReducer:swap-turn",
   SET_CONFIG: "gameReducer:set-user-config",
+  LOAD_EXISTING_STATE: "gameReducer:load-existing-state",
 };

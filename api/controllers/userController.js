@@ -5,19 +5,9 @@ const bcrypt = require("bcrypt");
 module.exports = {
   async login(req, res) {
     try {
-      const { username, password } = req.body;
-      console.log(req.body);
-      
-      const findUser = await User.findOne({ username });
-      if (!findUser)
-        return res.status(401).json({ unauthorized: "invalid credentials" });
-
-      const testPasswordMatch = bcrypt.compare(password, findUser.password);
-      if (!testPasswordMatch)
-        return res.status(401).json({ unauthorized: "invalid credentials" });
-
-      const token = await helpers.genToken(findUser._id);
-      res.status(200).json({ token });
+      // * Auth handled by passport middleware
+      const token = await helpers.genToken(req.user._id);
+      res.status(200).json({ token, state: req.user.userGameState });
     } catch (error) {
       console.log(error);
       res.status(500).json({ error: "unable to validate user at this time" });
@@ -25,7 +15,8 @@ module.exports = {
   },
   async saveGameState(req, res) {
     try {
-      console.log(req.body)
+      await User.findByIdAndUpdate(req.user._id, { userGameState: req.body });
+
       res.status(201).json({ save: "game state has been saved" });
     } catch (error) {
       console.log(error);

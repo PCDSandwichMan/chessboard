@@ -1,68 +1,22 @@
-const JwtStrategy = require("passport-jwt").Strategy;
-const LocalStrategy = require("passport-local").Strategy;
-const ExtractJwt = require("passport-jwt").ExtractJwt;
-const User = require("../models/User");
-const config = require("./config");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const passport = require("passport");
- 
-// JWT Auth
-passport.use(
-  new JwtStrategy(
-    {
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken("Bearer"),
-      secretOrKey: config.JWT_KEY,
-      passReqToCallback: true
-    },
-    async (req, payload, done) => {
-      try {
-        let userLocate;
-        if (payload.createdUser) {
-          userLocate = payload.createdUser;
-        } else {
-          userLocate = payload.foundUser;
-        }
-        const user = await User.findById(userLocate._id);
+const joi = require("@hapi/joi");
 
-        if (!user) {
-          return done(null, false);
-        }
-
-        req.user = user;
-        done(null, user);
-      } catch (err) {
-        console.log(err);
-        done(err, false);
+module.exports = {
+  validateBody: (schema) => {
+    return async (req, res, next) => {
+      const result = await schema.validate(req.body);
+      if (result.error) {
+        return res
+          .status(400)
+          .json({ error: result.error.toString().substring(7) });
       }
-    }
-  )
-);
 
-// Local Strategy
-passport.use(
-  new LocalStrategy(
-    {
-      usernameField: "email"
-    },
-    async (username, password, done) => {
-      try {
-        const user = await User.findOne(username);
+      if (!req.value) req.value = {};
+      req.value["body"] = result.value;
+      next();
+    };
+  },
 
-        if (!user) {
-          return done(null, false);
-        }
-
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-          return done(null, false);
-        }
-
-        done(null, user);
-      } catch (err) {
-        console.log(err);
-        done(err, false);
-      }
-    }
-  )
-);
+  schemas: {
+      // todo matt: add validation
+  },
+};

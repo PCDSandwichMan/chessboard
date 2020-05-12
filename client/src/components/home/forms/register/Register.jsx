@@ -18,7 +18,7 @@ export const Register = ({ setPageState, history }) => {
   const handleRegistration = () => {
     axios
       .post(`${constants.BASE_URL}/user/create`, { ...credentials })
-      .then((res) => { 
+      .then((res) => {
         history.push("/dashboard");
       })
       .catch((err) => console.log(err));

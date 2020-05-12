@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "../forms.scss";
+// - Redux
+import { connect } from "react-redux";
+import { setExistingState } from "../../../../redux/actions/gameActions";
 // - Routing
 import { withRouter } from "react-router";
 // - Http
@@ -8,7 +11,7 @@ import constants from "../../../../redux/constants";
 // - Material
 import { TextField, Button } from "@material-ui/core";
 
-export const Login = ({ setPageState, history }) => {
+export const Login = ({ setPageState, history, setExistingState }) => {
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -17,7 +20,8 @@ export const Login = ({ setPageState, history }) => {
   const handleLogin = () => {
     axios
       .post(`${constants.BASE_URL}/user/login`, { ...credentials })
-      .then((res) => {
+      .then((res) => { 
+        setExistingState(res.data.state.game);
         localStorage.setItem("token", `Bearer ${res.data.token}`);
         history.push("/dashboard");
       })
@@ -73,4 +77,4 @@ export const Login = ({ setPageState, history }) => {
   );
 };
 
-export default withRouter(Login);
+export default withRouter(connect(null, { setExistingState })(Login));

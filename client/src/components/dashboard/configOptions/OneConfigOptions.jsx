@@ -11,12 +11,14 @@ import AlbumIcon from "@material-ui/icons/Album";
 import { connect } from "react-redux";
 import { setUserConfig } from "../../../redux/actions/gameActions";
 
-export const OneConfigOptions = ({ setUserConfig }) => {
-  const [playerOneColor, setPlayerOneColor] = useState("red");
-  const [playerOneShape, setPlayerOneShape] = useState("star");
+export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
+  const [playerOneColor, setPlayerOneColor] = useState("");
+  const [playerOneShape, setPlayerOneShape] = useState("");
 
   useEffect(() => {
-    setUserConfig(1, playerOneColor, playerOneShape);
+    if (!playerOneConfig.selectedColor && !playerOneConfig.selectedIcon) {
+      setUserConfig(1, playerOneColor, playerOneShape);
+    }
   }, [playerOneColor, playerOneShape]);
 
   return (
@@ -92,7 +94,9 @@ export const OneConfigOptions = ({ setUserConfig }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  playerOneConfig: state.game.playerOneConfig,
+});
 
 const mapDispatchToProps = { setUserConfig };
 
