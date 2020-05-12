@@ -11,6 +11,8 @@ export const Board = ({ boardState }) => {
     console.log(boardState);
   }, [boardState]);
 
+  
+
   return (
     <div className="boardComponent">
       {boardState.map((row, rowIndex) => (

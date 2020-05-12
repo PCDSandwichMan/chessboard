@@ -18,10 +18,22 @@ function Dashboard({ setGameState }) {
       // * Set player one pieces
       if (i <= 1) {
         // * Set Player 1
-        newGameBoard.push(new Array(+rowCount).fill().map((e) => 1));
+        newGameBoard.push(
+          new Array(+rowCount).fill().map((e, j) => {
+            return (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1)
+              ? 1
+              : 0;
+          })
+        );
       } else if (i === rowCount - 1 || i === rowCount - 2) {
         // * Set Player 2
-        newGameBoard.push(new Array(+rowCount).fill().map((e) => 2));
+        newGameBoard.push(
+          new Array(+rowCount).fill().map((e, j) => {
+            return (i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1)
+              ? 2
+              : 0;
+          })
+        );
       } else {
         // * Set Empty
         newGameBoard.push(new Array(+rowCount).fill().map((e) => 0));
