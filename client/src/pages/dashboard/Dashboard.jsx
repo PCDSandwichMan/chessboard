@@ -31,7 +31,6 @@ function Dashboard({
 }) {
   const [rowCount, setRowCount] = useState(8);
 
-  // todo matt: extract to helper
   const handleBoardSetup = async (isNew) => {
     // - This can be removed, however, as describe is does not look great and will crash if over 40 tiles in width are requested (tested on 2017 MacBook Air)
     if (rowCount < 5 || rowCount >= 16) {
@@ -78,6 +77,7 @@ function Dashboard({
   const handleUserGameSave = (newGameBoard) => {
     if (newGameBoard[0]) {
       state.game.boardState = newGameBoard;
+      state.game.currentPlayerTurn = 1;
     }
     axios
       .post(
