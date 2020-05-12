@@ -67,6 +67,25 @@ const gameReducer = (state = initialState, { type, payload }) => {
         currentPlayerTurn: state.currentPlayerTurn === 1 ? 2 : 1,
       };
 
+    case constants.SET_CONFIG:
+      if (payload.playerType === 1) {
+        return {
+          ...state,
+          playerOneConfig: {
+            selectedIcon: payload.selectedIcon,
+            selectedColor: payload.selectedColor,
+          },
+        };
+      } else {
+        return {
+          ...state,
+          playerTwoConfig: {
+            selectedIcon: payload.selectedIcon,
+            selectedColor: payload.selectedColor,
+          },
+        };
+      }
+
     default:
       return state;
   }

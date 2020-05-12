@@ -1,7 +1,6 @@
 import constants from "../../redux/constants";
 
-export const setGameState = (gameState) => (dispatch) => {
-  console.log(gameState);
+export const setGameState = (gameState) => (dispatch) => { 
   dispatch({
     type: constants.SET_BOARD_STATE,
     payload: gameState,
@@ -81,13 +80,13 @@ export const swapTurn = () => (dispatch) => {
   });
 };
 
-export const setUserConfig = (playType, selectedColor, selectedIcon) => (
+export const setUserConfig = (playerType, selectedColor, selectedIcon) => (
   dispatch
-) => {
+) => { 
   dispatch({
     type: constants.SET_CONFIG,
     payload: {
-      playType,
+      playerType,
       selectedColor,
       selectedIcon,
     },

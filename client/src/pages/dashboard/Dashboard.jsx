@@ -16,9 +16,7 @@ import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfig
 function Dashboard({ setGameState, currentPlayerTurn }) {
   const [rowCount, setRowCount] = useState(8);
 
-  const handleSubmit = () => {
-    //create 2d array
-    console.log(rowCount);
+  const handleSubmit = () => { 
     if (rowCount <= 5 || rowCount >= 16) {
       alert(
         "I intentionally limit this is the handleSubmit function of Dashboard.jsx since less than 5 and there is no game and more than 13 and the screen dies"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./configOptions.scss";
 
 // - Material
@@ -12,8 +12,12 @@ import { connect } from "react-redux";
 import { setUserConfig } from "../../../redux/actions/gameActions";
 
 export const TwoConfigOptions = ({ setUserConfig }) => {
-  const [playerTwoColor, setPlayerTwoColor] = useState("");
-  const [playerTwoShape, setPlayerTwoShape] = useState("");
+  const [playerTwoColor, setPlayerTwoColor] = useState("orange");
+  const [playerTwoShape, setPlayerTwoShape] = useState("gitHubIcon");
+
+  useEffect(() => {
+    setUserConfig(2, playerTwoColor, playerTwoShape);
+  }, [playerTwoColor, playerTwoShape]);
 
   return (
     <div className="configOptionsComponent">

@@ -1,6 +1,9 @@
 import React from "react";
 import "./tile.scss";
 
+// - Utils
+import { ActiveIcon } from "../../../util/helpers";
+
 // - Redux
 import { connect } from "react-redux";
 import {
@@ -8,6 +11,16 @@ import {
   removeHighlights,
   swapTurn,
 } from "../../../redux/actions/gameActions";
+
+// - Material
+// * Player One
+import StarsIcon from "@material-ui/icons/Stars";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import AlbumIcon from "@material-ui/icons/Album";
+// * Player Two
+import GitHubIcon from "@material-ui/icons/GitHub";
+import AdbIcon from "@material-ui/icons/Adb";
+import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 
 export const Tile = ({
   playerValue,
@@ -21,6 +34,8 @@ export const Tile = ({
   boardState,
   currentPlayerTurn,
   swapTurn,
+  playerOnePref,
+  playerTwoPref,
 }) => {
   const isEvenTile = (row - column) % 2 === 0;
 
@@ -38,7 +53,7 @@ export const Tile = ({
     setActiveTile([row, column]);
     selectTile(playerValue, row, column);
   };
-
+  
   return (
     <div
       onClick={handleTileClick}
@@ -50,7 +65,11 @@ export const Tile = ({
     >
       {/* // todo implement playerValue !== 0 as a preview feature */}
       {playerValue > 0 && (
-        <div
+        <ActiveIcon
+          playerOneConfig={playerOnePref.selectedIcon}
+          playerTwoConfig={playerTwoPref.selectedIcon}
+          playerType={playerValue}
+          fontSize="large"
           onClick={handlePawnClick}
           className={`
           tile__pawn 
@@ -58,7 +77,7 @@ export const Tile = ({
           ${playerValue === 1 ? "pawn--red" : ""}
           ${row === isActive[0] && column === isActive[1] ? "pawn--active" : ""}
           `}
-        ></div>
+        />
       )}
     </div>
   );
@@ -67,6 +86,8 @@ export const Tile = ({
 const mapStateToProps = (state) => ({
   boardState: state.game.boardState,
   currentPlayerTurn: state.game.currentPlayerTurn,
+  playerOnePref: state.game.playerOneConfig,
+  playerTwoPref: state.game.playerTwoConfig,
 });
 
 const mapDispatchToProps = { movePawn, removeHighlights, swapTurn };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./configOptions.scss";
 
 // - Material
@@ -12,8 +12,12 @@ import { connect } from "react-redux";
 import { setUserConfig } from "../../../redux/actions/gameActions";
 
 export const OneConfigOptions = ({ setUserConfig }) => {
-  const [playerOneColor, setPlayerOneColor] = useState("");
-  const [playerOneShape, setPlayerOneShape] = useState("");
+  const [playerOneColor, setPlayerOneColor] = useState("red");
+  const [playerOneShape, setPlayerOneShape] = useState("star");
+
+  useEffect(() => {
+    setUserConfig(1, playerOneColor, playerOneShape);
+  }, [playerOneColor, playerOneShape]);
 
   return (
     <div className="configOptionsComponent">
