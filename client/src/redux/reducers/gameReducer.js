@@ -21,8 +21,7 @@ const gameReducer = (state = initialState, { type, payload }) => {
           return columnValue;
         });
       });
-
-      console.log(newBoard);
+      
       payload.forEach(([row, column]) => (newBoard[row][column] = -1));
       return {
         ...state,

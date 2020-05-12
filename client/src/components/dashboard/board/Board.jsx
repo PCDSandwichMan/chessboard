@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./board.scss";
 
 // - Component
@@ -9,9 +9,15 @@ import { connect } from "react-redux";
 import { highlightOptions } from "../../../redux/actions/gameActions";
 
 export const Board = ({ boardState, highlightOptions }) => {
-  useEffect(() => {
-    console.log(boardState);
-  }, [boardState]);
+  const [activeTile, setActiveTile] = useState([-1, -1]);
+
+  // useEffect(() => {
+  //   console.log(boardState);
+  // }, [boardState]);
+
+  // useEffect(() => {
+  //   console.log(activeTile);
+  // }, [activeTile]);
 
   const selectTile = (player, row, column) => {
     highlightOptions(player, row, column, boardState);
@@ -23,6 +29,8 @@ export const Board = ({ boardState, highlightOptions }) => {
         <div key={rowIndex} className="board__row">
           {row.map((column, colIdx) => (
             <Tile
+              isActive={activeTile}
+              setActiveTile={setActiveTile}
               playerValue={column}
               row={rowIndex}
               column={colIdx}

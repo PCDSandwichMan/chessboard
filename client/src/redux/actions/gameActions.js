@@ -8,7 +8,8 @@ export const setGameState = (gameState) => (dispatch) => {
   });
 };
 
-const leftOptions = (player, row, column, board) => {
+// todo move to util helpers
+const moveOptions = (player, row, column, board) => {
   /*======================
     the gist of this checks for bounds and if another piece is there 
     ======================*/
@@ -50,10 +51,20 @@ const leftOptions = (player, row, column, board) => {
 };
 
 export const highlightOptions = (player, row, column, board) => (dispatch) => {
-  const getOptions = leftOptions(player, row, column, board);
-  console.log(getOptions);
+  const getOptions = moveOptions(player, row, column, board);
+
   dispatch({
     type: constants.HIGHLIGHT_OPTIONS,
     payload: getOptions,
+  });
+};
+
+const movePawn = (oldLocation, newLocation) => (dispatch) => {
+  dispatch({
+    type: constants.MOVE_PAWN,
+    payload: {
+      oldLocation,
+      newLocation,
+    },
   });
 };

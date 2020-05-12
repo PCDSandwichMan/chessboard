@@ -8,7 +8,7 @@
 }
 
 .tileComponent--highlight {
-  border: 3px solid #ffb700;
+  border: 3px solid lightblue;
 }
 
 .tile--white {
@@ -26,6 +26,11 @@
   box-shadow: 2px 2px 4px #111;
   border: 1px solid #5a4d4d;
   cursor: pointer;
+  @include F();
+}
+
+.pawn--active {
+  border: 3px solid #eeff00 !important;
 }
 
 .pawn--red {

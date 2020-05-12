@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./tile.scss";
 
 // - Redux
 import { connect } from "react-redux";
 
-export const Tile = ({ playerValue, row, column, selectTile }) => {
+export const Tile = ({
+  playerValue,
+  row,
+  column,
+  selectTile,
+  isActive,
+  setActiveTile,
+}) => {
   const isEvenTile = (row - column) % 2 === 0;
   return (
     <div
@@ -16,11 +23,15 @@ export const Tile = ({ playerValue, row, column, selectTile }) => {
     >
       {playerValue !== 0 && (
         <div
-          onClick={() => selectTile(playerValue, row, column)}
+          onClick={() => {
+            setActiveTile([row, column]);
+            selectTile(playerValue, row, column);
+          }}
           className={`
           tile__pawn 
           ${playerValue === 2 ? "pawn--grey" : ""}
           ${playerValue === 1 ? "pawn--red" : ""}
+          ${row === isActive[0] && column === isActive[1] ? "pawn--active" : ""}
           `}
         ></div>
       )}
