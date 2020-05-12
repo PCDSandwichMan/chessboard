@@ -1,6 +1,7 @@
 import constants from "../constants";
 
 const initialState = {
+  currentPlayerTurn: 1,
   boardState: [],
 };
 
@@ -51,6 +52,12 @@ const gameReducer = (state = initialState, { type, payload }) => {
             return colVal;
           });
         }),
+      };
+
+    case constants.SWAP_TURN:
+      return {
+        ...state,
+        currentPlayerTurn: state.currentPlayerTurn === 1 ? 2 : 1,
       };
 
     default:

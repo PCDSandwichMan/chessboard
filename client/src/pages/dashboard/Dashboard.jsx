@@ -8,7 +8,7 @@ import Board from "../../components/dashboard/board/Board";
 import { connect } from "react-redux";
 import { setGameState } from "../../redux/actions/gameActions";
 
-function Dashboard({ setGameState }) {
+function Dashboard({ setGameState, currentPlayerTurn }) {
   const [rowCount, setRowCount] = useState(8);
 
   const handleSubmit = () => {
@@ -62,6 +62,18 @@ function Dashboard({ setGameState }) {
         </div>
       </header>
       <main>
+        <div
+          className={`
+        dashboardView__mainTtl
+        ${
+          currentPlayerTurn === 1
+            ? "dashboardView__mainTtl--playerOne"
+            : "dashboardView__mainTtl--playerTwo"
+        }
+        `}
+        >
+          <h1>Player {currentPlayerTurn === 1 ? "One" : "Two"}</h1>
+        </div>
         <Board />
       </main>
     </div>
@@ -69,7 +81,7 @@ function Dashboard({ setGameState }) {
 }
 
 const mapStateToProps = (state) => ({
-  state,
+  currentPlayerTurn: state.game.currentPlayerTurn,
 });
 
 const mapActionsToProps = { setGameState };

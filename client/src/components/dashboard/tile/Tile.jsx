@@ -3,7 +3,11 @@ import "./tile.scss";
 
 // - Redux
 import { connect } from "react-redux";
-import { movePawn, removeHighlights } from "../../../redux/actions/gameActions";
+import {
+  movePawn,
+  removeHighlights,
+  swapTurn,
+} from "../../../redux/actions/gameActions";
 
 export const Tile = ({
   playerValue,
@@ -15,6 +19,8 @@ export const Tile = ({
   movePawn,
   removeHighlights,
   boardState,
+  currentPlayerTurn,
+  swapTurn,
 }) => {
   const isEvenTile = (row - column) % 2 === 0;
 
@@ -23,10 +29,12 @@ export const Tile = ({
       movePawn(isActive, [row, column]);
       setActiveTile([-1, -1]);
       removeHighlights();
+      swapTurn();
     }
   };
 
   const handlePawnClick = () => {
+    if (playerValue !== currentPlayerTurn) return;
     setActiveTile([row, column]);
     selectTile(playerValue, row, column);
   };
@@ -58,8 +66,9 @@ export const Tile = ({
 
 const mapStateToProps = (state) => ({
   boardState: state.game.boardState,
+  currentPlayerTurn: state.game.currentPlayerTurn,
 });
 
-const mapDispatchToProps = { movePawn, removeHighlights };
+const mapDispatchToProps = { movePawn, removeHighlights, swapTurn };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tile);

@@ -75,3 +75,9 @@ export const movePawn = (oldLocation, newLocation) => (dispatch) => {
     },
   });
 };
+
+export const swapTurn = () => (dispatch) => { 
+  dispatch({
+    type: constants.SWAP_TURN,
+  });
+};
