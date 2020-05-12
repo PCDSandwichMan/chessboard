@@ -1,4 +1,4 @@
-***h1 CheckerBoard Challenge
+# CheckerBoard Challenge
 
 To start the app:
 *You need a .env file in the api folder with a MONGO_URI and JWT_SECRET to run*
