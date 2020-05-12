@@ -9,16 +9,17 @@ import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 
 // - Redux
 import { connect } from "react-redux";
+import { setUserConfig } from "../../../redux/actions/gameActions";
 
-export const TwoConfigOptions = () => {
+export const TwoConfigOptions = ({ setUserConfig }) => {
   const [playerTwoColor, setPlayerTwoColor] = useState("");
   const [playerTwoShape, setPlayerTwoShape] = useState("");
 
   return (
     <div className="configOptionsComponent">
-      <h1>Player Two</h1>
+      <h1>Player Two Options</h1>
       <div className="configOptions__container">
-        <h1>Colors</h1>
+        <h3>Colors</h3>
         <RadioGroup
           row
           name="position"
@@ -51,7 +52,7 @@ export const TwoConfigOptions = () => {
       </div>
 
       <div className="configOptions__container">
-        <h1>Shapes</h1>
+        <h3>Shapes</h3>
         <RadioGroup
           row
           aria-label="position"
@@ -89,6 +90,6 @@ export const TwoConfigOptions = () => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { setUserConfig };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TwoConfigOptions);

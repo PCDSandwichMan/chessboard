@@ -1,20 +1,31 @@
 @import "../../../assets/scss/";
 
 .configOptionsComponent {
-  width: 30%;
+  width: 25%;
+  padding: 5px 0;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.555);
   @include F($d: column);
+  border: 1px solid #111;
+  background: rgb(245, 245, 245);
+  h1 {
+    font-weight: 400;
+    font-size: 2rem;
+    font-size: 2rem;
+    text-decoration: underline;
+  }
 }
 
 .configOptions__container {
   @include F($d: column);
-  margin: 5vh 0;
-  h1 {
-    margin: 1.5rem 0;
+  margin: 4vh 0;
+  h3 {
+    color: #111;
+    margin: 1.1rem 0;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 300;
   }
 }
 
 .configOptions__icon {
-  font-size: 3rem !important;
+  font-size: 2.5rem !important;
 }

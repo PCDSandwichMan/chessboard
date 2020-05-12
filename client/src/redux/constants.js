@@ -7,4 +7,5 @@ module.exports = {
   REMOVE_HIGHLIGHTS: "gameReducer:remove-highlights",
   MOVE_PAWN: "gameReducer:move-pawn",
   SWAP_TURN: "gameReducer:swap-turn",
+  SET_CONFIG: "gameReducer:set-user-config",
 };

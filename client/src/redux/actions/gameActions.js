@@ -65,7 +65,7 @@ export const removeHighlights = () => (dispatch) => {
   });
 };
 
-export const movePawn = (oldLocation, newLocation) => (dispatch) => { 
+export const movePawn = (oldLocation, newLocation) => (dispatch) => {
   dispatch({
     type: constants.MOVE_PAWN,
     payload: {
@@ -75,8 +75,21 @@ export const movePawn = (oldLocation, newLocation) => (dispatch) => {
   });
 };
 
-export const swapTurn = () => (dispatch) => { 
+export const swapTurn = () => (dispatch) => {
   dispatch({
     type: constants.SWAP_TURN,
+  });
+};
+
+export const setUserConfig = (playType, selectedColor, selectedIcon) => (
+  dispatch
+) => {
+  dispatch({
+    type: constants.SET_CONFIG,
+    payload: {
+      playType,
+      selectedColor,
+      selectedIcon,
+    },
   });
 };

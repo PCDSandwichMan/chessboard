@@ -9,16 +9,17 @@ import AlbumIcon from "@material-ui/icons/Album";
 
 // - Redux
 import { connect } from "react-redux";
+import { setUserConfig } from "../../../redux/actions/gameActions";
 
-export const OneConfigOptions = () => {
+export const OneConfigOptions = ({ setUserConfig }) => {
   const [playerOneColor, setPlayerOneColor] = useState("");
   const [playerOneShape, setPlayerOneShape] = useState("");
 
   return (
     <div className="configOptionsComponent">
-      <h1>Player One</h1>
+      <h1>Player One Options</h1>
       <div className="configOptions__container">
-        <h1>Colors</h1>
+        <h3>Colors</h3>
         <RadioGroup
           row
           name="position"
@@ -51,7 +52,7 @@ export const OneConfigOptions = () => {
       </div>
 
       <div className="configOptions__container">
-        <h1>Shapes</h1>
+        <h3>Shapes</h3>
         <RadioGroup
           row
           aria-label="position"
@@ -89,6 +90,6 @@ export const OneConfigOptions = () => {
 
 const mapStateToProps = (state) => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { setUserConfig };
 
 export default connect(mapStateToProps, mapDispatchToProps)(OneConfigOptions);
