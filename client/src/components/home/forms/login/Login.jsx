@@ -73,6 +73,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
           onChange={handleChange}
           name="username"
           value={credentials.username}
+          data-test="component-login-input"
           className="home__form__input"
           label="Username"
         />
@@ -80,6 +81,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
           onChange={handleChange}
           name="password"
           value={credentials.password}
+          data-test="component-login-input"
           className="home__form__input"
           label="Password"
           type="password"
@@ -92,7 +94,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
         color="primary"
         onClick={handleLogin}
       >
-        <button>Login</button>
+        <button data-test="component-login-btn">Login</button>
       </div>
       <p className="home__form__signUp">
         Don’t have an account?{" "}
