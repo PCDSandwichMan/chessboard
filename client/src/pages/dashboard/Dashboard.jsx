@@ -32,10 +32,10 @@ function Dashboard({
   const [rowCount, setRowCount] = useState(8);
 
   const handleBoardSetup = async (isNew) => {
-    // - This can be removed, however, as describe is does not look great and will crash if over 40 tiles in width are requested (tested on 2017 MacBook Air)
-    if (rowCount < 5 || rowCount >= 16) {
+    // - This can be removed, however, as described it does not look great and will crash if over 40 tiles in width are requested (tested on 2017 MacBook Air)
+    if (rowCount < 5 || rowCount >= 18) {
       alert(
-        "I intentionally limit this is the handleBoardSetup function of Dashboard.jsx since less than 5 and there is no game and more than 15 and the screen dies"
+        "I intentionally limit this is the handleBoardSetup function of Dashboard.jsx since less than 5 and there is no game and more than 17 and the screen dies"
       );
       return;
     }
