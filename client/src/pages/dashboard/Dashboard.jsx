@@ -122,7 +122,7 @@ function Dashboard({
             }}
             className="dashboard__mainRight__ttl"
           >
-            <h3>Player One it's your turn</h3>
+            <h3>{currentPlayerTurn === 1 ? 'Player one': 'Player two' } it's your turn</h3>
           </div>
           <div className="dashboard__mainRight__board">
             <Board />
