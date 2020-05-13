@@ -1,8 +1,16 @@
-import "@testing-library/jest-dom/extend-expect";
-import Enzyme from "enzyme";
-import EnzymeAdapter from "enzyme-adapter-react-16";
+import React from "react";
+import Enzyme, { shallow, render, mount } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+// - Custom Selectors
+import { findByTestAttr } from "./util/customTestSelectors";
 
 Enzyme.configure({
-  adapter: new EnzymeAdapter(),
+  adapter: new Adapter(),
   disableLifecycleMethods: true,
 });
+
+global.React = React;
+global.shallow = shallow;
+global.render = render;
+global.mount = mount;
+global.findByTestAttr = findByTestAttr;
