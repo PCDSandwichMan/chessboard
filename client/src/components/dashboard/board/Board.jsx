@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./board.scss";
 
+// - Material
+import { CircularProgress } from "@material-ui/core";
 // - Component
 import Tile from "../tile/Tile.jsx";
-
 // - Redux
 import { connect } from "react-redux";
 import { highlightOptions } from "../../../redux/actions/gameActions";
@@ -14,27 +15,30 @@ export const Board = ({ boardState, highlightOptions }) => {
   const selectTile = (player, row, column) => {
     highlightOptions(player, row, column, boardState);
   };
-  
-  return (
-    <div className="boardComponent">
-      {/* // - Render tiles row by row */}
-      {boardState.length && boardState.map((row, rowIndex) => (
-        <div key={rowIndex} className="board__row">
-          {row.map((column, colIdx) => (
-            <Tile
-              isActive={activeTile}
-              setActiveTile={setActiveTile}
-              playerValue={column}
-              row={rowIndex}
-              column={colIdx}
-              key={colIdx + rowIndex}
-              selectTile={selectTile}
-            />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+
+  if (boardState.length) {
+    return (
+      <div className="boardComponent">
+        {/* // - Render tiles row by row */}
+        {boardState.map((row, rowIndex) => (
+          <div key={rowIndex} className="board__row">
+            {row.map((column, colIdx) => (
+              <Tile
+                isActive={activeTile}
+                setActiveTile={setActiveTile}
+                playerValue={column}
+                row={rowIndex}
+                column={colIdx}
+                key={colIdx + rowIndex}
+                selectTile={selectTile}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return <CircularProgress  />;
 };
 
 const mapStateToProps = (state) => ({

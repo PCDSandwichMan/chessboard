@@ -1,51 +1,26 @@
 @import "../../assets/scss/index";
 
+// - Page Vars
+$mainContainerBorder: 5px solid #999;
+
 .dashboardView {
   position: relative;
   background: url("https://images.pexels.com/photos/2525903/pexels-photo-2525903.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
     center fixed;
   background-size: cover;
   width: 100vw;
-  height: 100vh;
-  padding: 10px;
+  min-height: 100vh;
   overflow-x: hidden;
   header {
     background-color: #eee;
+    border-bottom: $mainContainerBorder;
     height: 65px;
-    @include F($d: column);
-    .MuiButton-outlined {
-      padding: 0.56rem;
-      margin-left: 20px;
-    }
-  }
-
-  @media screen and (max-device-width: 1150px) {
-    height: auto;
-    min-height: 80vh;
-    .dashboard__controlsWrapper {
-      @include F();
-      height: 100%;
-    }
-    header {
-      .MuiButton-outlined {
-        padding: 0.3rem;
-        font-size: 0.8rem;
-        margin-left: 20px;
-      }
-    }
-  }
-  @media screen and (max-device-width: 992px) {
-    header {
-      .dashboard__controlsWrapper {
-        width: 80vw;
-      }
-    }
-  }
-
-  @media screen and (max-device-width: 598px) {
-    header {
-      .MuiButton-outlined {
-        font-size: 0.7rem;
+    @include F();
+    h3 {
+      font-size: 2.5rem;
+      font-family: $damion;
+      @media screen and (max-device-width: 850px) {
+        font-size: 2rem;
       }
     }
   }
@@ -65,94 +40,39 @@
   color: #999;
 }
 
-.dashboardView__input {
-  width: 30vw;
-  .MuiOutlinedInput-input {
-    padding: 0.8rem;
-  }
-  @media screen and (max-device-width: 1150px) {
-    .MuiOutlinedInput-input {
-      padding: 0.5rem;
-    }
-  }
-  @media screen and (max-device-width: 1010px) {
-    width: 50vw !important;
-  }
-}
-
 .dashboard__main {
-  position: relative;
-  margin: 5vh auto;
-  width: 90vw;
-  min-height: 80vh;
-  padding: 10px 0;
-  @include F(space-evenly);
+  width: 100vw;
+  min-height: 93vh;
+  display: flex;
   background: #ffffffa2;
-  border-radius: 10px;
-
-  @media screen and (max-device-width: 1150px) {
-    flex-direction: column;
-    height: auto;
-    padding: 50px 0;
-    min-height: 80vh;
-  }
-
-  @media screen and (max-device-width: 600px) {
-    h1 {
-      font-size: 1rem;
-    }
-  }
 }
 
-.dashboard__main__save,
-.dashboard__main__reset {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 0.9rem;
-  color: #0084ff;
-  cursor: pointer;
-  transition: color 30ms ease-in-out; 
-  &:hover {
-    text-decoration: underline;
-  }
+.dashboard__mainLeft {
+  width: 25%;
+  border-right: $mainContainerBorder;
+  @include F($j: flex-start, $d: column);
 }
 
-.dashboard__main__save {
-  top: 10px;
-  right: 15px;
-  color: #0084ff;
-  &:hover {
-    color: #00a2ff;
-  }
-}
-.dashboard__main__reset {
-  top: 10px;
-  left: 15px;
-  width: 100px;
-  color: firebrick;
-  &:hover {
-    color: red;
-  }
+.dashboard__mainRight {
+  width: 75%;
+  @include F(flex-start, center, column);
 }
 
-.dashboardView__mainTtl {
-  padding: 10px 0;
-  @include F();
-  h1 {
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.253);
+.dashboard__mainRight__ttl {
+  width: 100%;
+  text-align: center;
+  background: #eee;
+  padding: 15px 0;
+  border-bottom: 1px solid #222;
+  h3 {
     color: #fff;
+    text-shadow: 1px 1px 3px #00000042;
   }
 }
 
-.dashboardView__mainTtl--playerOne {
-  background: firebrick;
-}
-
-.dashboardView__mainTtl--playerTwo {
-  background: #777;
-}
-
-.dashboardView__configOptions {
-  border: 1px solid red;
+.dashboard__mainRight__board {
+  box-shadow: 5px 5px 5px #00000021 inset;
+  @include F();
+  width: 100%;
+  height: 100%;
 }

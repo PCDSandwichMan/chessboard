@@ -3,28 +3,28 @@ import "./dashboard.scss";
 // - Http
 import axios from "axios";
 import constants from "../../redux/constants";
+// - Utils
+import { genGameBoard } from "../../util/helpers";
 // - Material
-import { TextField, Button } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 // - Components
 import Board from "../../components/dashboard/board/Board.jsx";
 import OneConfigOptions from "../../components/dashboard/configOptions/OneConfigOptions.jsx";
 import TwoConfigOptions from "../../components/dashboard/configOptions/TwoConfigOptions.jsx";
+import { BoardSizeInput } from "../../components/dashboard/boardSizeInput/BoardSizeInput";
 // - Redux
 import { connect } from "react-redux";
 import {
   setGameState,
   setExistingState,
 } from "../../redux/actions/gameActions";
-// - Utils
-import { genGameBoard } from "../../util/helpers";
 
 function Dashboard({
   setGameState,
-  currentPlayerTurn,
   history,
   state,
   boardState,
+  currentPlayerTurn,
   playerOneConfig,
   playerTwoConfig,
   setExistingState,
@@ -49,7 +49,7 @@ function Dashboard({
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { 
     // - Handle the requirement for refreshing the board state on refresh
     axios
       .get(`${constants.BASE_URL}/user/state`, {
@@ -95,56 +95,39 @@ function Dashboard({
   return (
     <div className="dashboardView" data-test="dashboardView">
       <header>
+        <h3>Checkerboard Challenge</h3>
         <div className="dashboard__logout" onClick={handleLogout}>
           <ExitToAppIcon className="dashboard__logout__icon" />
         </div>
-        <div className="dashboard__controlsWrapper">
-          <TextField
-            label="How wide do you want your board to be?"
-            color="primary"
-            variant="outlined"
-            value={rowCount}
-            onChange={(e) => setRowCount(e.target.value)}
-            type="number"
-            className="dashboardView__input"
-          />
-          <Button
-            onClick={() => handleBoardSetup(true)}
-            variant="outlined"
-            color="primary"
-          >
-            Create New Board
-          </Button>
-        </div>
       </header>
       <main className="dashboard__main">
-        <p className="dashboard__main__save" onClick={handleUserGameSave}>
-          Save Game
-        </p>
-        <p
-          className="dashboard__main__reset"
-          onClick={() => handleBoardSetup(true)}
-        >
-          Reset Game
-        </p>
-        <OneConfigOptions />
-        <section>
+        <div className="dashboard__mainLeft">
+          <BoardSizeInput
+            handleLogout={handleLogout}
+            rowCount={rowCount}
+            setRowCount={setRowCount}
+            handleBoardSetup={handleBoardSetup}
+            handleUserGameSave={handleUserGameSave}
+          />
+          <OneConfigOptions />
+          <TwoConfigOptions />
+        </div>
+        <div className="dashboard__mainRight">
           <div
-            className={`dashboardView__mainTtl`}
             style={{
               background:
                 currentPlayerTurn === 1
                   ? playerOneConfig.selectedColor
                   : playerTwoConfig.selectedColor,
             }}
+            className="dashboard__mainRight__ttl"
           >
-            <h1>
-              Current Turn: Player {currentPlayerTurn === 1 ? "One" : "Two"}
-            </h1>
+            <h3>Player One it's your turn</h3>
           </div>
-          <Board />
-        </section>
-        <TwoConfigOptions />
+          <div className="dashboard__mainRight__board">
+            <Board />
+          </div>
+        </div> 
       </main>
     </div>
   );

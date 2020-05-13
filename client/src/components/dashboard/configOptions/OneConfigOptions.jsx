@@ -16,10 +16,10 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
   const [playerOneShape, setPlayerOneShape] = useState("");
 
   // * Load previous state into local state
-  useEffect(() => {
+  useEffect(() => { 
     setPlayerOneShape(playerOneConfig.selectedIcon);
     setPlayerOneColor(playerOneConfig.selectedColor);
-  }, []);
+  }, [playerOneConfig]);
 
   useEffect(() => {
     setUserConfig(1, playerOneColor, playerOneShape);
@@ -29,7 +29,7 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
     <div className="configOptionsComponent">
       <h1>Player One Options</h1>
       <div className="configOptions__container">
-        <h3>Colors</h3>
+        <h3>Colors: </h3>
         <RadioGroup
           row
           name="position"
@@ -42,27 +42,24 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
             name="red"
             control={<Radio color="primary" />}
             label="Red"
-            labelPlacement="bottom"
           />
           <FormControlLabel
             value="green"
             name="green"
             control={<Radio color="primary" />}
             label="Green"
-            labelPlacement="bottom"
           />
           <FormControlLabel
             value="blue"
             name="blue"
             control={<Radio color="primary" />}
             label="Blue"
-            labelPlacement="bottom"
           />
         </RadioGroup>
       </div>
 
       <div className="configOptions__container">
-        <h3>Shapes</h3>
+        <h3>Shapes: </h3>
         <RadioGroup
           row
           aria-label="position"
@@ -76,21 +73,18 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
             name="star"
             control={<Radio color="primary" />}
             label={<StarsIcon className="configOptions__icon" />}
-            labelPlacement="bottom"
           />
           <FormControlLabel
             value="userIcon"
             name="userIcon"
             control={<Radio color="primary" />}
             label={<AccountCircleIcon className="configOptions__icon" />}
-            labelPlacement="bottom"
           />
           <FormControlLabel
             value="album"
             name="album"
             control={<Radio color="primary" />}
             label={<AlbumIcon className="configOptions__icon" />}
-            labelPlacement="bottom"
           />
         </RadioGroup>
       </div>

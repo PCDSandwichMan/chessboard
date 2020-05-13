@@ -1,65 +1,45 @@
 @import "../../../assets/scss/";
 
 .configOptionsComponent {
-  width: 25%;
-  padding: 5px 0;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.555);
-  @include F($d: column);
-  border: 1px solid #111;
+  width: 100%;
+  min-height: 16rem;
+  padding: 0 0 5px;
+  @include F(flex-start, flex-start, column);
+  border: 1px solid rgba(17, 17, 17, 0.164);
   background: rgb(245, 245, 245);
   h1 {
+    padding: 5px;
+    text-align: center;
     font-weight: 400;
-    font-size: 2rem;
-    text-decoration: underline;
+    font-size: 1.7rem;
+    font-family: $damion;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #999;
+    width: 100%;
   }
-  @media screen and (max-device-width: 1320px) {
-    h1 {
-      font-size: 1.4rem;
-    }
+  &:nth-child(2) {
+    border-top: 1px solid #999;
   }
-  @media screen and (max-device-width: 1150px) {
-    width: 90%;
-    margin: 0 0 10px;
-  }
-  @media screen and (max-device-width: 750px) {
-    h1 {
-      font-size: 1.2rem;
-    }
-  } 
 }
 
 .configOptions__container {
-  @include F($d: column);
-  margin: 4vh 0;
+  @include F(space-between, flex-start, column);
+  width: 90%;
+  margin: 20px 0 0 10px;
   h3 {
     color: #111;
-    margin: 1.1rem 0;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 300;
   }
-  @media screen and (max-device-width: 1320px) {
-    h3 {
-      font-size: 1.3rem;
-    }
+  .MuiTypography-root {
+    font-size: 0.9rem !important;
   }
-  @media screen and (max-device-width: 1150px) {
-    margin: 5px 0;
-    flex-direction: row;
-  }
-
-  @media screen and (max-device-width: 750px) {
-    h3 {
-      font-size: 1rem;
-    }
-    .MuiTypography-root {
-      font-size: 0.9rem !important;
-    }
+  .MuiFormGroup-root {
+    width: 80%;
+    margin: 0 0 0 30px;
   }
 }
 
 .configOptions__icon {
-  font-size: 2.5rem !important;
-  @media screen and (max-device-width: 1320px) {
-    font-size: 2rem !important;
-  }
+  font-size: 1.6rem !important;
 }

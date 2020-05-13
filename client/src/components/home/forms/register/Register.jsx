@@ -6,7 +6,7 @@ import constants from "../../../../redux/constants";
 // - Routing
 import { withRouter } from "react-router";
 // - Material
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 export const Register = ({ setPageState, history }) => {
   const [credentials, setCredentials] = useState({

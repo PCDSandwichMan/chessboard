@@ -9,7 +9,7 @@ import { withRouter } from "react-router";
 import axios from "axios";
 import constants from "../../../../redux/constants";
 // - Material
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 
 export const Login = ({ setPageState, history, setExistingState }) => {
   const [credentials, setCredentials] = useState({

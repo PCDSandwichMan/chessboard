@@ -1,0 +1,34 @@
+@import "../../../assets/scss/index";
+
+.boardSizeInputComponent { 
+  width: 100%;
+  height: 200px;
+  @include F($d: column);
+}
+
+.boardSizeInputComponent__wrapper {
+  width: 80%;
+}
+
+.boardSizeInputComponent__utilBar {
+  @include F($d: column);
+  margin: 0 0 10px;
+  .MuiButtonBase-root {
+    width: 100%;
+  }
+}
+
+.boardSizeInputComponent__input {
+  width: 100%;
+}
+
+.boardSizeInputComponent__utilBtns {
+  @include F(space-between);
+  .MuiButtonBase-root {
+    width: 42%;
+    white-space: nowrap;
+    @media screen and (max-device-width: 1240px){
+        font-size: .7rem;
+    }
+  }
+}
