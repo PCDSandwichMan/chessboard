@@ -15,8 +15,10 @@
     font-weight: 600;
     margin: 40px auto 20px;
     font-size: 2.5rem;
+    user-select: none;
   }
   img {
+    user-select: none;
     margin: 0 auto;
     width: 100px;
   }
@@ -70,6 +72,7 @@
     transform: scale(0.98);
   }
   button {
+    user-select: none;
     cursor: pointer;
     color: #333;
     background: none;

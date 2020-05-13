@@ -12,15 +12,15 @@ describe("Login Component", () => {
   });
 
   it("renders the Login component without errors", () => {
-    const wrapper = findByTestAttr(component, "LoginView");
+    const wrapper = findByTestAttr(component, "component-login");
     expect(wrapper.exists()).toBe(true);
   });
-  it("renders two input fields by default", () => {
+  it("renders two input fields", () => {
     const wrapper = findByTestAttr(component, "component-login-input");
     expect(wrapper.length).toBe(2);
   });
   it("renders the login button", () => {
     const wrapper = findByTestAttr(component, "component-login-btn");
     expect(wrapper.length).toBe(1);
-  });
+  }); 
 });

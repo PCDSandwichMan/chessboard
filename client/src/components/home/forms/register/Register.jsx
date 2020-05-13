@@ -63,7 +63,7 @@ export const Register = ({ setPageState, history }) => {
   };
 
   return (
-    <div className="home__form">
+    <div className="home__form" data-test="component-register">
       <h2>New Account</h2>
       <div className="home__form__registerFields">
         <TextField
@@ -72,6 +72,7 @@ export const Register = ({ setPageState, history }) => {
           name="username"
           onChange={handleChange}
           value={credentials.username}
+          data-test="component-register-input"
         />
         <TextField
           className="home__form__input"
@@ -80,6 +81,7 @@ export const Register = ({ setPageState, history }) => {
           name="password"
           onChange={handleChange}
           value={credentials.password}
+          data-test="component-register-input"
         />
         <TextField
           className="home__form__input"
@@ -88,6 +90,7 @@ export const Register = ({ setPageState, history }) => {
           name="confirmPassword"
           onChange={handleChange}
           value={credentials.confirmPassword}
+          data-test="component-register-input"
         />
       </div>
       <p className="home__error">{error}</p>
@@ -96,6 +99,7 @@ export const Register = ({ setPageState, history }) => {
         variant="outlined"
         color="primary"
         onClick={handleRegistration}
+        data-test="component-register-btn"
       >
         <button>Register</button>
       </div>

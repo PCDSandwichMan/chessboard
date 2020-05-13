@@ -65,7 +65,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
     "https://static.wixstatic.com/media/cfd4c6_7652149ff9d14692aeb9507504bbc55e~mv2.png/v1/fill/w_208,h_208,al_c,q_85,usm_0.66_1.00_0.01/drvd-distribution.webp";
 
   return (
-    <div className="home__form" data-test="LoginView">
+    <div className="home__form" data-test="component-login">
       <h2>Welcome</h2>
       <img src={drivenLogo} alt="driven logo" />
       <div className="home__form__fieldsContainer">
@@ -76,6 +76,7 @@ export const Login = ({ setPageState, history, setExistingState }) => {
           data-test="component-login-input"
           className="home__form__input"
           label="Username"
+          type="text"
         />
         <TextField
           onChange={handleChange}
