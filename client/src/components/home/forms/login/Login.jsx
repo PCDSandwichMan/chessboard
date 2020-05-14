@@ -93,13 +93,19 @@ export const Login = ({ setPageState, history, setExistingState }) => {
         className="home__form__btn"
         variant="outlined"
         color="primary"
+        data-test="component-login-btn"
         onClick={handleLogin}
       >
-        <button data-test="component-login-btn">Login</button>
+        <button>Login</button>
       </div>
       <p className="home__form__signUp">
         Don’t have an account?{" "}
-        <span onClick={() => setPageState("register")}>Sign Up</span>
+        <span
+          data-test="component-login-signup-btn"
+          onClick={() => setPageState("register")}
+        >
+          Sign Up
+        </span>
       </p>
     </div>
   );

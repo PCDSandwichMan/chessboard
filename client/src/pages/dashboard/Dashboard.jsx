@@ -17,6 +17,7 @@ import { connect } from "react-redux";
 import {
   setGameState,
   setExistingState,
+  setUserConfig,
 } from "../../redux/actions/gameActions";
 
 function Dashboard({
@@ -28,6 +29,7 @@ function Dashboard({
   playerOneConfig,
   playerTwoConfig,
   setExistingState,
+  setUserConfig,
 }) {
   const [rowCount, setRowCount] = useState(8);
 
@@ -40,7 +42,7 @@ function Dashboard({
       return;
     }
 
-    // - Create a new board if one is not in state or the user is creating a new board |this runs on mount as well|
+    // - Creates a new board if one is not in state or the user is creating a new board |this runs on mount as well|
     if (!boardState.length || isNew) {
       // * creates a 2d array with player 1 and play 2 reset
       const newGameBoard = genGameBoard(rowCount);
@@ -49,8 +51,8 @@ function Dashboard({
     }
   };
 
-  useEffect(() => { 
-    // - Handle the requirement for refreshing the board state on refresh
+  useEffect(() => {
+    // - Handles the requirement for refreshing the board state on refresh
     axios
       .get(`${constants.BASE_URL}/user/state`, {
         headers: {
@@ -58,9 +60,22 @@ function Dashboard({
         },
       })
       .then(({ data }) => {
-        setExistingState(data.state.game);
-        if (!data.state.game.boardState.length) {
+        const { game } = data.state;
+        setExistingState(game);
+        if (!game.boardState.length) {
           handleBoardSetup(true);
+        }
+        if (
+          !game.playerOneConfig.selectedColor ||
+          !game.playerOneConfig.selectedShape
+        ) {
+          setUserConfig(1, "red", "star");
+        }
+        if (
+          !game.playerTwoConfig.selectedColor ||
+          !game.playerTwoConfig.selectedShape
+        ) {
+          setUserConfig(2, "pink", "gitHubIcon");
         }
       })
       .catch((error) => {
@@ -122,12 +137,15 @@ function Dashboard({
             }}
             className="dashboard__mainRight__ttl"
           >
-            <h3>{currentPlayerTurn === 1 ? 'Player one': 'Player two' } it's your turn</h3>
+            <h3>
+              {currentPlayerTurn === 1 ? "Player one" : "Player two"} it's your
+              turn
+            </h3>
           </div>
           <div className="dashboard__mainRight__board">
             <Board />
           </div>
-        </div> 
+        </div>
       </main>
     </div>
   );
@@ -141,6 +159,6 @@ const mapStateToProps = (state) => ({
   state: state,
 });
 
-const mapActionsToProps = { setGameState, setExistingState };
+const mapActionsToProps = { setGameState, setExistingState, setUserConfig };
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard);

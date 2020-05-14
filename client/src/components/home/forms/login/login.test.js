@@ -22,5 +22,5 @@ describe("Login Component", () => {
   it("renders the login button", () => {
     const wrapper = findByTestAttr(component, "component-login-btn");
     expect(wrapper.length).toBe(1);
-  }); 
+  });
 });

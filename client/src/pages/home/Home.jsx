@@ -18,7 +18,7 @@ function Home() {
   ];
 
   return (
-    <div className="homeView">
+    <div className="homeView" data-test="view-home">
       <div className="home__background">
         <img src={drivenImages[0]} alt="driven business units logos" />
         <img src={drivenImages[1]} alt="driven business units logos" />

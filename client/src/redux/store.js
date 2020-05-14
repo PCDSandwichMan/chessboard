@@ -8,7 +8,7 @@ const middleware = [thunk];
 
 const initialState = {};
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   game: gameReducer,
 });
 
