@@ -67,13 +67,13 @@ function Dashboard({
         }
         if (
           !game.playerOneConfig.selectedColor ||
-          !game.playerOneConfig.selectedShape
+          !game.playerOneConfig.selectedIcon
         ) {
           setUserConfig(1, "red", "star");
         }
         if (
           !game.playerTwoConfig.selectedColor ||
-          !game.playerTwoConfig.selectedShape
+          !game.playerTwoConfig.selectedIcon
         ) {
           setUserConfig(2, "pink", "gitHubIcon");
         }
