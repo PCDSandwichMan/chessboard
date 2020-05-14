@@ -10,7 +10,7 @@ import {
   movePawn,
   removeHighlights,
   swapTurn,
-} from "../../../redux/actions/gameActions"; 
+} from "../../../redux/actions/gameActions";
 
 export const Tile = ({
   playerValue,
@@ -28,7 +28,7 @@ export const Tile = ({
   playerTwoPref,
 }) => {
   const isEvenTile = (row - column) % 2 === 0;
-
+  console.log(playerOnePref, playerTwoPref);
   // - Steps: moves player in 2d array, remove highlight including active, swap turns
   const handleTileClick = () => {
     if (isActive[0] !== -1 && boardState[row][column] === -1) {
@@ -39,13 +39,13 @@ export const Tile = ({
     }
   };
 
-  // - Steps: sets the active tile for glow, and options for glow |has to be players turn| 
+  // - Steps: sets the active tile for glow, and options for glow |has to be players turn|
   const handlePawnClick = () => {
     if (playerValue !== currentPlayerTurn) return;
     setActiveTile([row, column]);
     selectTile(playerValue, row, column);
   };
-  
+
   return (
     <div
       onClick={handleTileClick}
@@ -54,14 +54,14 @@ export const Tile = ({
       ${isEvenTile ? "tile--white" : "tile--black"}
       ${playerValue === -1 ? "tileComponent--highlight" : ""}
       `}
-    > 
+    >
       {playerValue > 0 && (
         <ActiveIcon
           playerOneConfig={playerOnePref}
           playerTwoConfig={playerTwoPref}
           playerType={playerValue}
           fontSize="large"
-          onClick={handlePawnClick} 
+          onClick={handlePawnClick}
           className={`
           tile__pawn 
           ${row === isActive[0] && column === isActive[1] ? "pawn--active" : ""}

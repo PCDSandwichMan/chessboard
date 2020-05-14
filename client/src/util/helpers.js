@@ -12,6 +12,8 @@ import AdbIcon from "@material-ui/icons/Adb";
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
 // * Fallback
 import HelpIcon from "@material-ui/icons/Help";
+// * Default
+import AdjustIcon from "@material-ui/icons/Adjust";
 
 // - Used as a helper for assigning the active icon on the pawn
 export const ActiveIcon = ({
@@ -43,6 +45,13 @@ export const ActiveIcon = ({
             {...rest}
           />
         );
+      case "default":
+        return (
+          <AdjustIcon
+            style={{ color: playerOneConfig.selectedColor }}
+            {...rest}
+          />
+        );
       default:
         return (
           <HelpIcon
@@ -67,6 +76,13 @@ export const ActiveIcon = ({
       case "emoji":
         return (
           <EmojiEmotionsIcon
+            style={{ color: playerTwoConfig.selectedColor }}
+            {...rest}
+          />
+        );
+      case "default":
+        return (
+          <AdjustIcon
             style={{ color: playerTwoConfig.selectedColor }}
             {...rest}
           />

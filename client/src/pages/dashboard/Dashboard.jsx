@@ -69,13 +69,13 @@ function Dashboard({
           !game.playerOneConfig.selectedColor ||
           !game.playerOneConfig.selectedIcon
         ) {
-          setUserConfig(1, "red", "star");
+          setUserConfig(1, "red", "default");
         }
         if (
           !game.playerTwoConfig.selectedColor ||
           !game.playerTwoConfig.selectedIcon
         ) {
-          setUserConfig(2, "pink", "gitHubIcon");
+          setUserConfig(2, "grey", "default");
         }
       })
       .catch((error) => {
