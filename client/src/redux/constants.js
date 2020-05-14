@@ -9,4 +9,5 @@ module.exports = {
   SWAP_TURN: "gameReducer:swap-turn",
   SET_CONFIG: "gameReducer:set-user-config",
   LOAD_EXISTING_STATE: "gameReducer:load-existing-state",
+  CLEAR_STORE: "gameReducer:clear-redux-store",
 };

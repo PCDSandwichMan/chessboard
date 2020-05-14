@@ -99,6 +99,10 @@ const gameReducer = (state = initialState, { type, payload }) => {
         ...payload,
       };
 
+    // - Used to clear the store on logout
+    case constants.CLEAR_STORE:
+      return initialState;
+
     // - Fallthrough
     default:
       return state;

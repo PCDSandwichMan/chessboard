@@ -64,4 +64,11 @@ export const setExistingState = (oldState) => (dispatch) => {
     type: constants.LOAD_EXISTING_STATE,
     payload: oldState,
   });
+}; 
+
+// - Clears the store for logout
+export const clearStore = () => (dispatch) => {
+  dispatch({
+    type: constants.CLEAR_STORE,
+  });
 };

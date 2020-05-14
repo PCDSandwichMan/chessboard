@@ -18,6 +18,7 @@ import {
   setGameState,
   setExistingState,
   setUserConfig,
+  clearStore,
 } from "../../redux/actions/gameActions";
 
 function Dashboard({
@@ -30,6 +31,7 @@ function Dashboard({
   playerTwoConfig,
   setExistingState,
   setUserConfig,
+  clearStore,
 }) {
   const [rowCount, setRowCount] = useState(8);
 
@@ -85,6 +87,7 @@ function Dashboard({
 
   const handleLogout = () => {
     localStorage.clear();
+    clearStore()
     history.push("/");
   };
 
@@ -159,6 +162,11 @@ const mapStateToProps = (state) => ({
   state: state,
 });
 
-const mapActionsToProps = { setGameState, setExistingState, setUserConfig };
+const mapActionsToProps = {
+  setGameState,
+  setExistingState,
+  setUserConfig,
+  clearStore,
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard);

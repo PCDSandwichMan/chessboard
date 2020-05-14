@@ -38,14 +38,14 @@ export const TwoConfigOptions = ({ setUserConfig, playerTwoConfig }) => {
           onChange={(e) => setPlayerTwoColor(e.target.name)}
         >
           <FormControlLabel
-            value="pink"
-            name="pink"
+            value="#ff4081"
+            name="#ff4081"
             control={<Radio color="primary" />}
             label="Pink"
           />
           <FormControlLabel
-            value="purple"
-            name="purple"
+            value="#b388ff"
+            name="#b388ff"
             control={<Radio color="primary" />}
             label="Purple"
           />

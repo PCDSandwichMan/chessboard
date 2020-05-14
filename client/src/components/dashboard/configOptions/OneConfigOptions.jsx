@@ -16,7 +16,7 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
   const [playerOneShape, setPlayerOneShape] = useState("");
 
   // * Load previous state into local state
-  useEffect(() => { 
+  useEffect(() => {
     setPlayerOneShape(playerOneConfig.selectedIcon);
     setPlayerOneColor(playerOneConfig.selectedColor);
   }, [playerOneConfig]);
@@ -38,20 +38,20 @@ export const OneConfigOptions = ({ setUserConfig, playerOneConfig }) => {
           onChange={(e) => setPlayerOneColor(e.target.name)}
         >
           <FormControlLabel
-            value="red"
-            name="red"
+            value="#bf360c"
+            name="#bf360c"
             control={<Radio color="primary" />}
             label="Red"
           />
           <FormControlLabel
-            value="green"
-            name="green"
+            value="#00c853"
+            name="#00c853"
             control={<Radio color="primary" />}
             label="Green"
           />
           <FormControlLabel
-            value="blue"
-            name="blue"
+            value="#64b5f6"
+            name="#64b5f6"
             control={<Radio color="primary" />}
             label="Blue"
           />
