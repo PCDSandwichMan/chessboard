@@ -9,16 +9,16 @@ import Tile from "../tile/Tile.jsx";
 import { connect } from "react-redux";
 import { highlightOptions } from "../../../redux/actions/gameActions";
 
-export const Board = ({ boardState, highlightOptions }) => {
+const Board = ({ boardState, highlightOptions }) => {
   const [activeTile, setActiveTile] = useState([-1, -1]);
 
   const selectTile = (player, row, column) => {
     highlightOptions(player, row, column, boardState);
   };
 
-  if (boardState.length) {
+  if (boardState && boardState.length) {
     return (
-      <div className="boardComponent">
+      <div data-test="component-board" className="boardComponent">
         {/* // - Render tiles row by row */}
         {boardState.map((row, rowIndex) => (
           <div key={rowIndex} className="board__row">
@@ -38,7 +38,7 @@ export const Board = ({ boardState, highlightOptions }) => {
       </div>
     );
   }
-  return <CircularProgress  />;
+  return <CircularProgress />;
 };
 
 const mapStateToProps = (state) => ({

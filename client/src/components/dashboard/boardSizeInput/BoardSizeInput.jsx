@@ -27,6 +27,7 @@ export const BoardSizeInput = ({
               onClick={() => handleBoardSetup(true)}
               variant="outlined"
               color="primary"
+              data-test="component-boardSizeInput-createBoardBtn"
             >
               Create New Board
             </Button>
@@ -34,6 +35,7 @@ export const BoardSizeInput = ({
         <div className="boardSizeInputComponent__utilBtns">
           <Button
             variant="outlined"
+            data-test="component-boardSizeInput-saveGameBtn"
             className="boardSizeInputComponent__main__save"
             onClick={handleUserGameSave}
           >
@@ -41,6 +43,7 @@ export const BoardSizeInput = ({
           </Button>
           <Button
             variant="outlined"
+            data-test="component-boardSizeInput-resetBtn"
             className="boardSizeInputComponent__main__reset"
             onClick={() => handleBoardSetup(true)}
           >
