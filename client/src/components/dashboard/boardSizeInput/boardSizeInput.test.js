@@ -12,12 +12,12 @@ describe("BoardSizeInput Component", () => {
     component = setup();
   });
 
-  it("renders the BoardSizeInput component without errors", () => { 
+  it("renders the BoardSizeInput component without errors", () => {
     expect(component.exists()).toBe(true);
   });
   it("fires the handleBoardSetup function on CREATE NEW BOARD click", () => {
     const mockHandleBoardSetup = jest.fn();
-    component.setProps({ 
+    component.setProps({
       handleBoardSetup: mockHandleBoardSetup,
     });
 
@@ -31,7 +31,7 @@ describe("BoardSizeInput Component", () => {
   });
   it("fires the handleBoardSetup function on RESET GAME click", () => {
     const mockHandleBoardSetup = jest.fn();
-    component.setProps({ 
+    component.setProps({
       handleBoardSetup: mockHandleBoardSetup,
     });
 
@@ -42,7 +42,7 @@ describe("BoardSizeInput Component", () => {
   });
   it("fires the handleUserGameSave function on SAVE GAME click", () => {
     const mockHandleUserGameSave = jest.fn();
-    component.setProps({ 
+    component.setProps({
       handleUserGameSave: mockHandleUserGameSave,
     });
 
